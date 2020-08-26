@@ -8,7 +8,7 @@ import ControlsLimited from '../components/ControlsLimited';
 
 import DomeWalls from '../components/DomeWalls';
 import Pedestal from '../components/Pedestal';
-import Screen from '../components/Screen';
+import ScreenSupport from '../components/ScreenSupport';
 import DomeFloor from '../components/DomeFloor';
 
 export default () => {
@@ -43,22 +43,22 @@ export default () => {
                     position={[10, 6, 5]}
                 />
                 <Pedestal />
-                <Screen
+                <ScreenSupport
                     position={[1.75, 0, 2]}
                     dimension={[0.1, 1, 0.6]}
                     rotation={[0, Math.PI / 4, 0]}
                 />
-                <Screen
+                <ScreenSupport
                     position={[1.75, 0, -2]}
                     dimension={[0.1, 1, 0.6]}
                     rotation={[0, -Math.PI / 4, 0]}
                 />
-                <Screen
+                <ScreenSupport
                     position={[-2, 0, -1.5]}
                     dimension={[0.1, 1, 0.6]}
                     rotation={[0, -Math.PI / 8, 0]}
                 />
-                <Screen
+                <ScreenSupport
                     position={[-2, 0, 1.5]}
                     dimension={[0.1, 1, 0.6]}
                     rotation={[0, Math.PI / 8, 0]}
