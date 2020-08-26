@@ -1,9 +1,14 @@
 import React from 'react';
 
-export default () => {
+export default ({
+    color = 'rgb(200, 200, 200)',
+    position = [0, 0, 0],
+    dimension = [0, 0, 0],
+    ...props
+}) => {
     return (
-        <mesh position={[0, -0.25, 0]}>
-            <cylinderGeometry attach="geometry" args={[0.5, 0.5, 0.5, 100]} />
+        <mesh position={position} {...props}>
+            <boxBufferGeometry attach="geometry" args={dimension} />
             <meshPhongMaterial
                 attach="material"
                 color="rgb(50, 50, 50)"

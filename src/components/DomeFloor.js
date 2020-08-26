@@ -2,8 +2,8 @@ import React from 'react';
 
 export default () => {
     return (
-        <mesh>
-            <sphereGeometry attach="geometry" args={[5, 100, 100]} />
+        <mesh position={[0, -1, 0]}>
+            <boxBufferGeometry attach="geometry" args={[10, 1, 10]} />
             <meshStandardMaterial
                 attach="material"
                 color="rgb(0, 168, 224)"
