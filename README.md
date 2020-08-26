@@ -2,7 +2,7 @@
 
 -   Three.js
 -   React Three Fiber
--   TypeScript
+-   `three-js-csg-es6`: ES6-compatible wrapper around Chandler Prall's Three.js Constructive Solid Geometry (CSG) port.
 -   Styled Components
 -   Webpack
 -   Babel

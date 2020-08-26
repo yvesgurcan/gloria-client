@@ -6,7 +6,7 @@ import GlobalStyles from '../components/GlobalStyles';
 import Controls from '../components/Controls';
 import ControlsLimited from '../components/ControlsLimited';
 
-// import DomeWalls from '../components/DomeWalls';
+import DomeWalls from '../components/DomeWalls';
 import Pedestal from '../components/Pedestal';
 import Screen from '../components/Screen';
 import DomeFloor from '../components/DomeFloor';
@@ -26,19 +26,19 @@ export default () => {
                 }}
             >
                 {isLocalHost() ? <Controls /> : <ControlsLimited />}
-                <ambientLight intensity={0.9} />
+                <ambientLight intensity={0.85} />
                 <directionalLight
-                    color="rgb(200, 200, 100)"
+                    color="rgb(220, 220, 100)"
                     intensity={0.3}
                     position={[-2, 9, 0]}
                 />
                 <directionalLight
-                    color="rgb(200, 200, 100)"
+                    color="rgb(220, 220, 100)"
                     intensity={0.2}
                     position={[7, -3, -5]}
                 />
                 <directionalLight
-                    color="rgb(200, 200, 100)"
+                    color="rgb(220, 220, 100)"
                     intensity={0.1}
                     position={[10, 6, 5]}
                 />
@@ -64,6 +64,7 @@ export default () => {
                     rotation={[0, Math.PI / 8, 0]}
                 />
                 <DomeFloor />
+                <DomeWalls />
             </Canvas>
         </span>
     );
