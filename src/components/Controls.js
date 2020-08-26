@@ -20,11 +20,13 @@ export default ({ autoRotate = false, delayRotation, ...props }) => {
         <orbitControls
             enabled
             enableDamping
+            enablePan={false}
             ref={elementReference}
             args={[camera, gl.domElement]}
             rotateSpeed={0.5}
             dampingFactor={1}
             autoRotate={autoRotate}
+            target={[3, 0, 0]}
             {...props}
         />
     );

@@ -6,7 +6,7 @@ export default () => {
             <cylinderGeometry attach="geometry" args={[0.5, 0.5, 0.5, 100]} />
             <meshPhongMaterial
                 attach="material"
-                color="rgb(50, 50, 50)"
+                color="rgb(40, 40, 40)"
                 roughness={0.5}
                 opacity={1}
                 transparent={false}

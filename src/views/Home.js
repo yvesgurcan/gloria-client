@@ -1,5 +1,5 @@
-import React from 'react';
-import { Canvas } from 'react-three-fiber';
+import React, { useEffect, useRef } from 'react';
+import { Canvas, useFrame, useThree } from 'react-three-fiber';
 import { Vector3 } from 'three';
 
 import GlobalStyles from '../components/GlobalStyles';
@@ -12,6 +12,16 @@ import ScreenSupport from '../components/ScreenSupport';
 import Screen from '../components/Screen';
 import DomeFloor from '../components/DomeFloor';
 
+function Camera(props) {
+    const ref = useRef();
+    const { setDefaultCamera } = useThree();
+    // Make the camera known to the system
+    useEffect(() => setDefaultCamera(ref.current), []);
+    // Update it every frame
+    useFrame(() => ref.current.updateMatrixWorld());
+    return <perspectiveCamera ref={ref} {...props} />;
+}
+
 export default () => {
     function isLocalHost() {
         return location.hostname === 'localhost';
@@ -20,26 +30,27 @@ export default () => {
     return (
         <span>
             <GlobalStyles />
-            <Canvas
-                shadowMap
-                camera={{
-                    position: new Vector3(5, 1, 0)
-                }}
-            >
+            <Canvas shadowMap>
+                <Camera position={[4, 0, 0]} />
                 {isLocalHost() ? <Controls /> : <ControlsLimited />}
                 <ambientLight intensity={0.85} />
+                <spotLight
+                    color="white"
+                    intensity={0.5}
+                    position={[-20, 20, -5]}
+                />
                 <directionalLight
-                    color="rgb(220, 220, 100)"
-                    intensity={0.3}
+                    color="white"
+                    intensity={0.1}
                     position={[-2, 9, 0]}
                 />
                 <directionalLight
-                    color="rgb(220, 220, 100)"
+                    color="white"
                     intensity={0.2}
                     position={[7, -3, -5]}
                 />
                 <directionalLight
-                    color="rgb(220, 220, 100)"
+                    color="white"
                     intensity={0.1}
                     position={[10, 6, 5]}
                 />

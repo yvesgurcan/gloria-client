@@ -6,8 +6,8 @@ import { Mesh, CylinderGeometry } from 'three';
 export default () => {
     const domeWallMesh = useMemo(() => {
         // build geometry
-        const outerCylinder = new Mesh(new CylinderGeometry(6, 6, 12, 60, 4));
-        const innerCylinder = new Mesh(new CylinderGeometry(5, 5, 12, 60, 4));
+        const outerCylinder = new Mesh(new CylinderGeometry(6, 6, 20, 60, 4));
+        const innerCylinder = new Mesh(new CylinderGeometry(5, 5, 20, 60, 4));
         const icBSP = new ThreeBSP(innerCylinder);
         const ocBSP = new ThreeBSP(outerCylinder);
 
@@ -19,7 +19,7 @@ export default () => {
         mesh.material = new Three.MeshPhongMaterial({
             specular: 0x1a1a1a,
             shininess: 30,
-            shading: Three.FlatShading
+            flatShading: Three.FlatShading
         });
 
         // apply texture to mesh
@@ -27,6 +27,8 @@ export default () => {
             'https://raw.githubusercontent.com/yvesgurcan/3d-dome/master/public/metal.jpg'
         );
         mesh.material.map = texture;
+
+        mesh.position.y = 9.48;
 
         return mesh;
     });
