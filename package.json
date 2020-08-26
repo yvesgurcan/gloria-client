@@ -44,7 +44,6 @@
     "dependencies": {
         "react-three-fiber": "^4.2.20",
         "three": "^0.119.1",
-        "three-js-csg-es6": "^73.0.0",
-        "three-plain-animator": "^1.0.2"
+        "three-js-csg-es6": "^73.0.0"
     }
 }
