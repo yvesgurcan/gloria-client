@@ -49,3 +49,4 @@ Note that views are layered. As the user browses the application, 3D scenes are 
 -   https://www.youtube.com/watch?v=2LwLI9N0N7o
 -   https://codesandbox.io/s/house-react-three-fiber-86tzx?file=/src/styles.css:0-224
 -   https://codesandbox.io/s/r3f-sparks-sbf2i?from-embed
+-   https://stackoverflow.com/questions/11826798/how-do-i-construct-a-hollow-cylinder-in-three-js
