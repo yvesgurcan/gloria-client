@@ -17,7 +17,6 @@ export default () => {
         // create mesh
         const mesh = carvedCylinder.toMesh();
         mesh.material = new Three.MeshPhongMaterial({
-            color: 0xdddddd,
             specular: 0x1a1a1a,
             shininess: 30,
             shading: Three.FlatShading

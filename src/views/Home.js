@@ -9,6 +9,7 @@ import ControlsLimited from '../components/ControlsLimited';
 import DomeWalls from '../components/DomeWalls';
 import Pedestal from '../components/Pedestal';
 import ScreenSupport from '../components/ScreenSupport';
+import Screen from '../components/Screen';
 import DomeFloor from '../components/DomeFloor';
 
 export default () => {
@@ -48,11 +49,21 @@ export default () => {
                     dimension={[0.1, 1, 0.6]}
                     rotation={[0, Math.PI / 4, 0]}
                 />
+                {/*<Screen
+                    position={[1.8, 0, 1.95]}
+                    dimension={[0, 1, 0.6]}
+                    rotation={[0, Math.PI / 4, 0]}
+                />*/}
                 <ScreenSupport
                     position={[1.75, 0, -2]}
                     dimension={[0.1, 1, 0.6]}
                     rotation={[0, -Math.PI / 4, 0]}
                 />
+                {/*<Screen
+                    position={[1.8, 0, -1.95]}
+                    dimension={[0, 1, 0.6]}
+                    rotation={[0, -Math.PI / 4, 0]}
+                />*/}
                 <ScreenSupport
                     position={[-2, 0, -1.5]}
                     dimension={[0.1, 1, 0.6]}
