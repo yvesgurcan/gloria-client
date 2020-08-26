@@ -1,5 +1,5 @@
 import React, { Suspense, forwardRef, useMemo } from 'react';
-import { useLoader, useUpdate, useThree, useFrame } from 'react-three-fiber';
+import { useLoader, useUpdate } from 'react-three-fiber';
 import * as THREE from 'three';
 
 const Text = forwardRef(
@@ -15,8 +15,6 @@ const Text = forwardRef(
         },
         elementReference
     ) => {
-        const { camera } = useThree();
-
         const font = useLoader(
             THREE.FontLoader,
             'https://raw.githubusercontent.com/yvesgurcan/3d-menu-alt/master/public/font.json'
