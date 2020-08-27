@@ -29,11 +29,11 @@ export default ({ autoRotate = false, delayRotation, ...props }) => {
             rotateSpeed={0.5}
             dampingFactor={1}
             autoRotate={autoRotate}
-            target={[3, 0, 0]}
             keys={{
                 LEFT: 37, //left arrow
                 RIGHT: 39 // right arrow
             }}
+            target={[3, 0.08, 0]}
             {...props}
         />
     );
