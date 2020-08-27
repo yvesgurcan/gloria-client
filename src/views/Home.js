@@ -56,7 +56,7 @@ export default () => {
                 />
                 <Pedestal />
                 <ScreenSupport
-                    position={[1.75, 0, 2]}
+                    position={[1.25, 0, 1.5]}
                     dimension={[0.1, 1, 0.6]}
                     rotation={[0, Math.PI / 4, 0]}
                 />
@@ -66,7 +66,7 @@ export default () => {
                     rotation={[0, Math.PI / 4, 0]}
                 />*/}
                 <ScreenSupport
-                    position={[1.75, 0, -2]}
+                    position={[1.25, 0, -1.5]}
                     dimension={[0.1, 1, 0.6]}
                     rotation={[0, -Math.PI / 4, 0]}
                 />
@@ -76,12 +76,12 @@ export default () => {
                     rotation={[0, -Math.PI / 4, 0]}
                 />*/}
                 <ScreenSupport
-                    position={[-2, 0, -1.5]}
+                    position={[-1.5, 0, -1.25]}
                     dimension={[0.1, 1, 0.6]}
                     rotation={[0, -Math.PI / 8, 0]}
                 />
                 <ScreenSupport
-                    position={[-2, 0, 1.5]}
+                    position={[-1.5, 0, 1.25]}
                     dimension={[0.1, 1, 0.6]}
                     rotation={[0, Math.PI / 8, 0]}
                 />
