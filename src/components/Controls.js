@@ -2,8 +2,9 @@ import React, { useRef, useEffect } from 'react';
 import * as Three from 'three';
 import { useFrame, useThree, extend } from 'react-three-fiber';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { DeviceOrientationControls } from 'three/examples/jsm/controls/DeviceOrientationControls';
 
-extend({ OrbitControls });
+extend({ OrbitControls, DeviceOrientationControls });
 
 export default ({
     autoRotate = false,
@@ -13,6 +14,12 @@ export default ({
 }) => {
     const elementReference = useRef();
     const { camera, gl } = useThree();
+
+    window.addEventListener(
+        'deviceorientation',
+        event => console.log('deviceorientation changed', event),
+        true
+    );
 
     useFrame(() => {
         if (delayRotation) {
