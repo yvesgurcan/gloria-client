@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import { Canvas, useFrame, useThree } from 'react-three-fiber';
-import { Vector3 } from 'three';
 
 import GlobalStyles from '../components/GlobalStyles';
 import Controls from '../components/Controls';
@@ -8,6 +7,7 @@ import ControlsLimited from '../components/ControlsLimited';
 
 import DomeWalls from '../components/DomeWalls';
 import Pedestal from '../components/Pedestal';
+import Triforce from '../components/Triforce';
 import ScreenSupport from '../components/ScreenSupport';
 import Screen from '../components/Screen';
 import DomeFloor from '../components/DomeFloor';
@@ -30,7 +30,7 @@ export default () => {
     return (
         <span>
             <GlobalStyles />
-            <Canvas shadowMap>
+            <Canvas style={{ background: 'rgb(140, 140, 255)' }} shadowMap>
                 <Camera position={[4, 0, 0]} />
                 {isLocalHost() ? <Controls /> : <ControlsLimited />}
                 <ambientLight intensity={0.85} />
@@ -55,6 +55,7 @@ export default () => {
                     position={[10, 6, 5]}
                 />
                 <Pedestal />
+                <Triforce />
                 <ScreenSupport
                     position={[1.25, 0, 1.5]}
                     dimension={[0.1, 1, 0.6]}

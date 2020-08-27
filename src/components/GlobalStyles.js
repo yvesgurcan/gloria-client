@@ -4,7 +4,6 @@ export default createGlobalStyle`
 body {
     font-family: sans-serif;
     margin: 0;
-    background: rgb(140, 140, 255);
 }
 
 html,
