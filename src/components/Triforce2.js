@@ -3,7 +3,8 @@ import { useLoader } from 'react-three-fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
 function Triforce() {
-    const model = useLoader(
+    let model = null;
+    model = useLoader(
         GLTFLoader,
         'https://raw.githubusercontent.com/yvesgurcan/3d-dome/master/public/triforce2/scene.gltf'
     );

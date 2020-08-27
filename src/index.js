@@ -18,9 +18,15 @@ ReactDOM.render(
                 return <Home />;
             }}
         />
-        <Switch>
-            <Route path="/triforce" component={TriforceRoom} />
-        </Switch>
+        <Route
+            component={({ history }) => {
+                return (
+                    <TriforceRoom
+                        display={history.location.pathname === '/triforce'}
+                    />
+                );
+            }}
+        />
     </HashRouter>,
     rootElement
 );
