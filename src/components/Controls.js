@@ -78,6 +78,17 @@ export default ({
     let lastBeta = 0;
 
     useEffect(() => {
+        console.log('useEffect');
+
+        if (
+            typeof DeviceOrientationEvent !== 'undefined' &&
+            DeviceOrientationEvent.requestPermission
+        ) {
+            DeviceOrientationEvent.requestPermission();
+        } else {
+            console.error('DeviceOrientationEvent is undefined');
+        }
+
         orbitControlsReference.current.update = () => {
             console.log('update orientation');
 
