@@ -109,6 +109,7 @@ export default ({
         };
 
         function onDeviceOrientationChangeEvent(event) {
+            console.log({ event });
             orbitControlsReference.current.deviceOrientation = event;
         }
 
