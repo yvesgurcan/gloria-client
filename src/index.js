@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createBrowserHistory } from 'history';
-import { HashRouter, Route } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 
 import Home from './views/Home';
+import TriforceRoom from './views/TriforceRoom';
 
 const rootElement = document.getElementById('root');
 const customHistory = createBrowserHistory();
@@ -17,6 +18,9 @@ ReactDOM.render(
                 return <Home />;
             }}
         />
+        <Switch>
+            <Route path="/triforce" component={TriforceRoom} />
+        </Switch>
     </HashRouter>,
     rootElement
 );

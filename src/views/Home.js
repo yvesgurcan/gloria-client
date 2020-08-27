@@ -30,7 +30,7 @@ export default () => {
     return (
         <span>
             <GlobalStyles />
-            <Canvas style={{ background: 'rgb(140, 140, 255)' }} shadowMap>
+            <Canvas style={{ background: 'rgb(140, 140, 255)' }}>
                 <Camera position={[4, 0, 0]} />
                 {isLocalHost() ? <Controls /> : <ControlsLimited />}
                 <ambientLight intensity={0.85} />
