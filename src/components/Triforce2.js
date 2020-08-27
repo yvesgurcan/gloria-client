@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { useLoader } from 'react-three-fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
-function Triforce({ to = '/triforce' }) {
+function Triforce() {
     const model = useLoader(
         GLTFLoader,
         'https://raw.githubusercontent.com/yvesgurcan/3d-dome/master/public/triforce2/scene.gltf'
