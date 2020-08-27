@@ -6,6 +6,7 @@ import { DeviceOrientationControls } from 'three/examples/jsm/controls/DeviceOri
 
 extend({ OrbitControls, DeviceOrientationControls });
 
+/*
 const zee = new Three.Vector3(0, 0, 1);
 const euler = new Three.Euler();
 const q0 = new Three.Quaternion();
@@ -56,6 +57,7 @@ function Quat2Angle(x, y, z, w) {
 
     return new Three.Vector3(pitch, roll, yaw);
 }
+*/
 
 export default ({
     autoRotate = false,
@@ -65,6 +67,15 @@ export default ({
 }) => {
     const orbitControlsReference = useRef();
     const { camera, gl } = useThree();
+
+    const controls = new DeviceOrientationControls(camera);
+    console.log({ controls });
+
+    /*
+    function onDeviceOrientationChangeEvent(event) {
+        console.log({ event });
+        orbitControlsReference.current.deviceOrientation = event;
+    }
 
     useEffect(() => {
         orbitControlsReference.current.update = () => {
@@ -108,11 +119,6 @@ export default ({
             lastBeta = currentAngle.y;
         };
 
-        function onDeviceOrientationChangeEvent(event) {
-            console.log({ event });
-            orbitControlsReference.current.deviceOrientation = event;
-        }
-
         window.addEventListener(
             'deviceorientation',
             onDeviceOrientationChangeEvent,
@@ -126,8 +132,11 @@ export default ({
             );
         };
     }, []);
+    */
 
     useFrame(() => {
+        controls.update();
+
         if (delayRotation) {
             return;
         }
