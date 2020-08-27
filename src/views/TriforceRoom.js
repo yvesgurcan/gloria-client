@@ -25,6 +25,31 @@ export default () => {
                 <Canvas>
                     <Camera position={[-0.9, 0, 0]} />
                     <Controls autoRotate target={[0, 0, 0]} />
+                    <directionalLight
+                        color="white"
+                        intensity={1}
+                        position={[-1, -1, 0]}
+                    />
+                    <directionalLight
+                        color="white"
+                        intensity={0.85}
+                        position={[-1, -1, 0]}
+                    />
+                    <directionalLight
+                        color="white"
+                        intensity={1}
+                        position={[1, 1, 0]}
+                    />
+                    <directionalLight
+                        color="white"
+                        intensity={1}
+                        position={[1, 1, 1]}
+                    />
+                    <directionalLight
+                        color="white"
+                        intensity={0.8}
+                        position={[1, -5, 1]}
+                    />
                     <Triforce2 />
                 </Canvas>
             </MenuContent>
