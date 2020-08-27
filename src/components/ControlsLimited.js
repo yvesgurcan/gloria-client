@@ -7,7 +7,7 @@ export default () => (
         enableZoom={false}
         minAzimuthAngle={0}
         maxAzimuthAngle={Math.PI}
-        minPolarAngle={Math.PI / 1.9}
-        maxPolarAngle={Math.PI / 1.9}
+        minPolarAngle={Math.PI / 2.3}
+        maxPolarAngle={Math.PI / 1.5}
     />
 );
