@@ -1,12 +1,12 @@
 {
     "name": "3d-dome",
     "description": "🐟 It's 3D and it's beautiful.",
-    "version": "0.0.31",
+    "version": "0.0.33",
     "license": "MIT",
     "author": "Yves Gurcan",
     "repository": {
         "type": "git",
-        "url": "https://github.com/yvesgurcan/3d-menu-alt"
+        "url": "https://github.com/yvesgurcan/3d-dome"
     },
     "main": "index.js",
     "scripts": {
@@ -42,6 +42,7 @@
         "workbox-webpack-plugin": "^5.1.3"
     },
     "dependencies": {
+        "eruda": "^2.3.3",
         "react-three-fiber": "^4.2.20",
         "three": "^0.119.1",
         "three-js-csg-es6": "^73.0.0"

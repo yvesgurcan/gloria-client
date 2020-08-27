@@ -2,12 +2,24 @@ import React, { useRef, useEffect } from 'react';
 import * as Three from 'three';
 import { useFrame, useThree, extend } from 'react-three-fiber';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { DeviceOrientationControls } from 'three/examples/jsm/controls/DeviceOrientationControls';
 
-extend({ OrbitControls });
+extend({ OrbitControls, DeviceOrientationControls });
 
-export default ({ autoRotate = false, delayRotation, ...props }) => {
+export default ({
+    autoRotate = false,
+    delayRotation,
+    target = [3, 0.08, 0],
+    ...props
+}) => {
     const elementReference = useRef();
     const { camera, gl } = useThree();
+
+    window.addEventListener(
+        'deviceorientation',
+        event => console.log('deviceorientation changed', event),
+        true
+    );
 
     useFrame(() => {
         if (delayRotation) {
@@ -22,18 +34,14 @@ export default ({ autoRotate = false, delayRotation, ...props }) => {
         <orbitControls
             enabled
             enableDamping
-            enablePan={true}
-            keyPanSpeed={80}
+            enablePan
+            keyPanSpeed={40}
             ref={elementReference}
             args={[camera, gl.domElement]}
             rotateSpeed={0.5}
             dampingFactor={1}
             autoRotate={autoRotate}
-            keys={{
-                LEFT: 37, //left arrow
-                RIGHT: 39 // right arrow
-            }}
-            target={[3, 0.08, 0]}
+            target={target}
             {...props}
         />
     );

@@ -6,6 +6,7 @@
 -   React Three Fiber
 -   `three-js-csg-es6`: ES6-compatible wrapper around Chandler Prall's Three.js Constructive Solid Geometry (CSG) port.
 -   Styled Components
+-   Eruda: debug tool intended for access of the JavaScript console in mobile
 -   Webpack
 -   Babel
 -   Prettier config
