@@ -80,13 +80,19 @@ export default ({
     useEffect(() => {
         console.log('useEffect');
 
-        if (
-            typeof DeviceOrientationEvent !== 'undefined' &&
-            DeviceOrientationEvent.requestPermission
-        ) {
+        if (typeof DeviceOrientationEvent === 'undefined') {
+            console.error(
+                'DeviceOrientationEvent is undefined. Are you on localhost? This device orientation API requires HTTPS.'
+            );
+            return;
+        }
+
+        if (DeviceOrientationEvent.requestPermission) {
+            console.log('Requesting permission.');
             DeviceOrientationEvent.requestPermission();
         } else {
-            console.error('DeviceOrientationEvent is undefined');
+            console.error('Can not request permission.');
+            return;
         }
 
         orbitControlsReference.current.update = () => {
