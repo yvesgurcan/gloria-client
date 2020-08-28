@@ -64,6 +64,7 @@ export default ({
     ...props
 }) => {
     const [target, setTarget] = useState(targetProp);
+    const targetRef = useRef(targetProp);
     const orbitControlsReference = useRef();
     const { camera, gl } = useThree();
 
@@ -72,12 +73,18 @@ export default ({
     console.log({ controls });
     */
 
-    function onDeviceOrientationChangeEvent(event) {
+    const onDeviceOrientationChangeEvent = event => {
         const { alpha, beta, gamma } = event;
-        console.log({ alpha, beta, gamma });
+        const newTarget = [
+            targetRef.current[0] - alpha / 180,
+            targetRef.current[1] - beta / 180,
+            targetRef.current[2] - gamma / 180
+        ];
+        console.log(target, newTarget, { alpha, beta, gamma });
 
-        setTarget(target[0] - alpha, target[1] - beta, target[2] - gamma);
-    }
+        targetRef.current = newTarget;
+        setTarget(newTarget);
+    };
 
     useEffect(() => {
         /*
@@ -147,6 +154,18 @@ export default ({
                 lastBeta
             });
         };
+        */
+
+        /*
+        setInterval(
+            () =>
+                onDeviceOrientationChangeEvent({
+                    alpha: 10, // up and down
+                    beta: 10, // forward and backward
+                    gamma: 10 // left and right
+                }),
+            1000
+        );
         */
 
         window.addEventListener(
