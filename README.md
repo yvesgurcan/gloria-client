@@ -55,3 +55,4 @@ Note that views are layered. As the user browses the application, 3D scenes are 
 -   https://stackoverflow.com/questions/11826798/how-do-i-construct-a-hollow-cylinder-in-three-js
 -   https://codesandbox.io/s/xvvn4vxqnz
 -   https://codesandbox.io/examples/package/react-three-fiber
+-   https://github.com/takahirox/takahirox.github.io/blob/master/three.js.mmdeditor/examples/misc_controls_deviceorientation.html
