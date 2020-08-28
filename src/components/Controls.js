@@ -47,6 +47,7 @@ export default ({
     };
 
     useEffect(() => {
+        /*
         simulateDeviceOrientation(
             [
                 Math.random() * 360,
@@ -55,6 +56,7 @@ export default ({
             ],
             onDeviceOrientation
         );
+        */
 
         window.addEventListener(
             'deviceorientation',

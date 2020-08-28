@@ -1,10 +1,8 @@
-import React, { Suspense, useRef } from 'react';
-import { useLoader, useFrame } from 'react-three-fiber';
+import React, { Suspense } from 'react';
+import { useLoader } from 'react-three-fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
-function Triforce() {
-    const meshReference = useRef();
-
+function Triforce2() {
     let model = null;
     model = useLoader(
         GLTFLoader,
@@ -14,12 +12,8 @@ function Triforce() {
     // This model is huuuuuuge!
     model.scene.scale.set(0.007, 0.007, 0.007);
 
-    useFrame(() => {
-        meshReference.current.rotation.x += 1;
-    });
-
     return (
-        <mesh ref={meshReference} rotation={[0, Math.PI / 2, 0]}>
+        <mesh rotation={[0, Math.PI / 2, 0]}>
             <primitive object={model.scene} position={[0, 0, 0]} />
         </mesh>
     );
@@ -27,6 +21,6 @@ function Triforce() {
 
 export default () => (
     <Suspense fallback={null}>
-        <Triforce />
+        <Triforce2 />
     </Suspense>
 );
