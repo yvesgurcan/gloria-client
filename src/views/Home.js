@@ -78,28 +78,28 @@ export default () => {
                     <ControlsLimited />
                 )}
                 {orientationControls && <DeviceOrientation />}
-                <ambientLight intensity={0.85} />
-                <spotLight
-                    color="white"
-                    intensity={0.5}
-                    position={[-20, 20, -5]}
-                />
-                <directionalLight
-                    color="white"
-                    intensity={0.1}
-                    position={[-2, 9, 0]}
-                />
-                <directionalLight
-                    color="white"
-                    intensity={0.2}
-                    position={[7, -3, -5]}
-                />
-                <directionalLight
-                    color="white"
-                    intensity={0.1}
-                    position={[10, 6, 5]}
-                />
                 <group position={[4, 0, 0]} rotation={[0, -Math.PI, 0]}>
+                    <ambientLight intensity={0.85} />
+                    <spotLight
+                        color="white"
+                        intensity={0.5}
+                        position={[-20, 20, -5]}
+                    />
+                    <directionalLight
+                        color="white"
+                        intensity={0.1}
+                        position={[-2, 9, 0]}
+                    />
+                    <directionalLight
+                        color="white"
+                        intensity={0.2}
+                        position={[7, -3, -5]}
+                    />
+                    <directionalLight
+                        color="white"
+                        intensity={0.1}
+                        position={[10, 6, 5]}
+                    />
                     <Pedestal />
                     <Triforce />
                     <ScreenSupport

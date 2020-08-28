@@ -7,7 +7,7 @@ extend({ OrbitControls });
 export default ({
     autoRotate = false,
     delayRotation,
-    target = [3, 0.08, 0],
+    target = [1, 0.08, 0],
     ...props
 }) => {
     const orbitControlsReference = useRef();
