@@ -71,9 +71,13 @@ export default () => {
         <span>
             <GlobalStyles />
             <Canvas style={{ background: 'rgb(140, 140, 255)' }}>
-                <Camera position={[4, 0, 0]} />
-                {isLocalHost() ? <Controls /> : <ControlsLimited />}
-                <DeviceOrientation />
+                <Camera position={[0, 0, 0]} />
+                {orientationControls ? null : isLocalHost() ? (
+                    <Controls />
+                ) : (
+                    <ControlsLimited />
+                )}
+                {orientationControls && <DeviceOrientation />}
                 <ambientLight intensity={0.85} />
                 <spotLight
                     color="white"
@@ -95,40 +99,42 @@ export default () => {
                     intensity={0.1}
                     position={[10, 6, 5]}
                 />
-                <Pedestal />
-                <Triforce />
-                <ScreenSupport
-                    position={[1.25, 0, 1.5]}
-                    dimension={[0.1, 1, 0.6]}
-                    rotation={[0, Math.PI / 4, 0]}
-                />
-                {/*<Screen
+                <group position={[4, 0, 0]} rotation={[0, -Math.PI, 0]}>
+                    <Pedestal />
+                    <Triforce />
+                    <ScreenSupport
+                        position={[1.25, 0, 1.5]}
+                        dimension={[0.1, 1, 0.6]}
+                        rotation={[0, Math.PI / 4, 0]}
+                    />
+                    {/*<Screen
                     position={[1.8, 0, 1.95]}
                     dimension={[0, 1, 0.6]}
                     rotation={[0, Math.PI / 4, 0]}
                 />*/}
-                <ScreenSupport
-                    position={[1.25, 0, -1.5]}
-                    dimension={[0.1, 1, 0.6]}
-                    rotation={[0, -Math.PI / 4, 0]}
-                />
-                {/*<Screen
+                    <ScreenSupport
+                        position={[1.25, 0, -1.5]}
+                        dimension={[0.1, 1, 0.6]}
+                        rotation={[0, -Math.PI / 4, 0]}
+                    />
+                    {/*<Screen
                     position={[1.8, 0, -1.95]}
                     dimension={[0, 1, 0.6]}
                     rotation={[0, -Math.PI / 4, 0]}
                 />*/}
-                <ScreenSupport
-                    position={[-1.5, 0, -1.25]}
-                    dimension={[0.1, 1, 0.6]}
-                    rotation={[0, -Math.PI / 8, 0]}
-                />
-                <ScreenSupport
-                    position={[-1.5, 0, 1.25]}
-                    dimension={[0.1, 1, 0.6]}
-                    rotation={[0, Math.PI / 8, 0]}
-                />
-                <DomeFloor />
-                <DomeWalls />
+                    <ScreenSupport
+                        position={[-1.5, 0, -1.25]}
+                        dimension={[0.1, 1, 0.6]}
+                        rotation={[0, -Math.PI / 8, 0]}
+                    />
+                    <ScreenSupport
+                        position={[-1.5, 0, 1.25]}
+                        dimension={[0.1, 1, 0.6]}
+                        rotation={[0, Math.PI / 8, 0]}
+                    />
+                    <DomeFloor />
+                    <DomeWalls />
+                </group>
             </Canvas>
         </span>
     );
