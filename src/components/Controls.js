@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import * as Three from 'three';
 import { useFrame, useThree, extend } from 'react-three-fiber';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
@@ -60,36 +60,39 @@ function Quat2Angle(x, y, z, w) {
 export default ({
     autoRotate = false,
     delayRotation,
-    target = [3, 0.08, 0],
+    target: targetProp = [3, 0.08, 0],
     ...props
 }) => {
+    const [target, setTarget] = useState(targetProp);
     const orbitControlsReference = useRef();
     const { camera, gl } = useThree();
 
+    /*
     const controls = new DeviceOrientationControls(camera);
     console.log({ controls });
+    */
 
     function onDeviceOrientationChangeEvent(event) {
-        console.log(event.absolute);
-        console.log(event.alpha);
-        console.log(event.beta);
-        console.log(event.gamma);
-        orbitControlsReference.current.deviceOrientation = event;
+        const { alpha, beta, gamma } = event;
+        console.log({ alpha, beta, gamma });
+
+        setTarget(target[0] - alpha, target[1] - beta, target[2] - gamma);
     }
 
-    let lastGamma = 0;
-    let lastBeta = 0;
-
     useEffect(() => {
-        console.log('useEffect');
-
+        /*
         if (typeof DeviceOrientationEvent === 'undefined') {
             console.error(
                 'DeviceOrientationEvent is undefined. Are you on localhost? This device orientation API requires HTTPS.'
             );
             return;
         }
+        */
 
+        /*
+        let lastGamma = 0;
+        let lastBeta = 0;
+    
         orbitControlsReference.current.update = () => {
             console.log('update orientation');
 
@@ -144,6 +147,7 @@ export default ({
                 lastBeta
             });
         };
+        */
 
         window.addEventListener(
             'deviceorientation',
@@ -160,7 +164,9 @@ export default ({
     }, []);
 
     useFrame(() => {
+        /*
         controls.update();
+        */
 
         if (delayRotation) {
             return;
