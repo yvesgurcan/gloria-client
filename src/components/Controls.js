@@ -40,7 +40,7 @@ export default ({
             targetRef.current[1] - beta / 180, // forward and backward
             targetRef.current[2] - alpha / 360 // left and right
         ];
-        console.log(target, newTarget, { alpha, beta, gamma });
+        console.log({ target, newTarget, alpha, beta, gamma });
 
         targetRef.current = newTarget;
         setTarget(newTarget);
