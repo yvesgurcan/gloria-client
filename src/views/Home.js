@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Canvas, useFrame, useThree } from 'react-three-fiber';
 
 import GlobalStyles from '../components/GlobalStyles';
@@ -14,16 +14,55 @@ import Screen from '../components/Screen';
 import DomeFloor from '../components/DomeFloor';
 
 function Camera(props) {
-    const ref = useRef();
+    const cameraReference = useRef();
     const { setDefaultCamera } = useThree();
     // Make the camera known to the system
-    useEffect(() => setDefaultCamera(ref.current), []);
+    useEffect(() => {
+        setDefaultCamera(cameraReference.current);
+    }, []);
     // Update it every frame
-    useFrame(() => ref.current.updateMatrixWorld());
-    return <perspectiveCamera ref={ref} {...props} />;
+    useFrame(() => {
+        cameraReference.current.updateMatrixWorld();
+    });
+    return <perspectiveCamera ref={cameraReference} {...props} />;
+}
+
+function Camera2(props) {
+    const cameraReference = useRef();
+    const { setDefaultCamera } = useThree();
+    // Make the camera known to the system
+    useEffect(() => {
+        setDefaultCamera(cameraReference.current);
+    }, []);
+    // Update it every frame
+    useFrame(() => cameraReference.current.updateMatrixWorld());
+    return <perspectiveCamera ref={cameraReference} {...props} />;
 }
 
 export default () => {
+    const [orientationControls, setOrientationControls] = useState(false);
+
+    const onDeviceOrientation = event => {
+        if (!orientationControls) {
+            setOrientationControls(true);
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener(
+            'deviceorientation',
+            onDeviceOrientation,
+            false
+        );
+
+        return () => {
+            window.removeEventListener(
+                'deviceorientation',
+                onDeviceOrientation
+            );
+        };
+    }, []);
+
     function isLocalHost() {
         return location.hostname === 'localhost';
     }
