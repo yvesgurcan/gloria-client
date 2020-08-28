@@ -50,21 +50,25 @@ export default () => {
 
     useEffect(() => {
         async function askForDeviceOrientationPermission() {
-            console.log('Checking device orientation permissions...');
-            if (
+            console.info('Checking device orientation permissions...');
+            if (typeof DeviceOrientationEvent === 'undefined') {
+                console.error(
+                    'DeviceOrientationEvent is undefined. Is this a secure connection over HTTPS?'
+                );
+            } else if (
                 DeviceOrientationEvent &&
                 typeof DeviceOrientationEvent.requestPermission === 'function'
             ) {
                 const permissionState = await DeviceOrientationEvent.requestPermission();
 
                 if (permissionState === 'granted') {
-                    console.log('Device orientation permission granted.');
+                    console.info('Device orientation permission granted.');
                 } else {
                     console.error('Device orientation permission denied.');
                 }
             } else {
-                console.log(
-                    'Device orientation permission request is not a function. No need to ask for permission.'
+                console.info(
+                    'DeviceOrientationEvent.requestPermission is not a function. Can not ask for permission to use device orientation.'
                 );
             }
         }

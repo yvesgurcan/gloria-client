@@ -12,7 +12,7 @@ const rootElement = document.getElementById('root');
 attachUIConsole();
 
 // log version to check updates in production
-console.log(packageJson.name, packageJson.version);
+console.info(packageJson.name, packageJson.version);
 
 ReactDOM.render(
     <HashRouter>
