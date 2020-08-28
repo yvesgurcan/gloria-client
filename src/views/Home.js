@@ -50,16 +50,36 @@ export default () => {
 
     useEffect(() => {
         async function askForDeviceOrientationPermission() {
+            console.info('Checking some browser permissions...');
+            const accelerometerPermissionStatus = await navigator.permissions.query(
+                {
+                    name: 'accelerometer'
+                }
+            );
+            const magnetometerPermissionStatus = await navigator.permissions.query(
+                {
+                    name: 'magnetometer'
+                }
+            );
+            const gyroscopePermissionStatus = await navigator.permissions.query(
+                {
+                    name: 'gyroscope'
+                }
+            );
+            console.info({ accelerometerPermissionStatus });
+            console.info({ magnetometerPermissionStatus });
+            console.info({ gyroscopePermissionStatus });
+
             console.info('Checking device orientation permissions...');
-            if (typeof DeviceMotionEvent === 'undefined') {
+            if (typeof DeviceOrientation === 'undefined') {
                 console.error(
                     'DeviceMotionEvent is undefined. Is this a secure connection over HTTPS?'
                 );
             } else if (
-                DeviceMotionEvent &&
-                typeof DeviceMotionEvent.requestPermission === 'function'
+                DeviceOrientation &&
+                typeof DeviceOrientation.requestPermission === 'function'
             ) {
-                const permissionState = await DeviceMotionEvent.requestPermission();
+                const permissionState = await DeviceOrientation.requestPermission();
 
                 if (permissionState === 'granted') {
                     console.info('Device orientation permission granted.');
@@ -69,7 +89,7 @@ export default () => {
                 }
             } else {
                 console.info(
-                    'DeviceMotionEvent.requestPermission is not a function. Can not ask for permission to use device orientation.'
+                    'DeviceOrientation.requestPermission is not a function. Can not ask for permission to use device orientation.'
                 );
                 return true;
             }
