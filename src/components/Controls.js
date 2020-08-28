@@ -70,7 +70,10 @@ export default ({
     console.log({ controls });
 
     function onDeviceOrientationChangeEvent(event) {
-        console.log({ event });
+        console.log(event.absolute);
+        console.log(event.alpha);
+        console.log(event.beta);
+        console.log(event.gamma);
         orbitControlsReference.current.deviceOrientation = event;
     }
 
@@ -84,14 +87,6 @@ export default ({
             console.error(
                 'DeviceOrientationEvent is undefined. Are you on localhost? This device orientation API requires HTTPS.'
             );
-            return;
-        }
-
-        if (DeviceOrientationEvent.requestPermission) {
-            console.log('Requesting permission.');
-            DeviceOrientationEvent.requestPermission();
-        } else {
-            console.error('Can not request permission.');
             return;
         }
 

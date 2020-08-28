@@ -7,12 +7,12 @@ import attachUIConsole from './util/attachUIConsole';
 import Home from './views/Home';
 import TriforceRoom from './views/TriforceRoom';
 
-// log version to check updates in production
-console.log(packageJson.name, packageJson.version);
-
 const rootElement = document.getElementById('root');
 
 attachUIConsole();
+
+// log version to check updates in production
+console.log(packageJson.name, packageJson.version);
 
 ReactDOM.render(
     <HashRouter>
