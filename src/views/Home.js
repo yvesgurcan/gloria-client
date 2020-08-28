@@ -4,6 +4,7 @@ import { Canvas, useFrame, useThree } from 'react-three-fiber';
 import GlobalStyles from '../components/GlobalStyles';
 import Controls from '../components/Controls';
 import ControlsLimited from '../components/ControlsLimited';
+import DeviceOrientation from '../components/DeviceOrientation';
 
 import DomeWalls from '../components/DomeWalls';
 import Pedestal from '../components/Pedestal';
@@ -33,6 +34,7 @@ export default () => {
             <Canvas style={{ background: 'rgb(140, 140, 255)' }}>
                 <Camera position={[4, 0, 0]} />
                 {isLocalHost() ? <Controls /> : <ControlsLimited />}
+                <DeviceOrientation />
                 <ambientLight intensity={0.85} />
                 <spotLight
                     color="white"

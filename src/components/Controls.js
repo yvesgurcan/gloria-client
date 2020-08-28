@@ -27,6 +27,7 @@ export default ({
     const [target, setTarget] = useState(targetProp);
     const targetRef = useRef(targetProp);
     const orbitControlsReference = useRef();
+    const controls = useRef();
     const { camera, gl } = useThree();
 
     const onDeviceOrientation = event => {
@@ -83,11 +84,7 @@ export default ({
     }, []);
     */
 
-    const controls = new DeviceOrientationControls(camera);
-
     useFrame(() => {
-        controls.update();
-
         if (delayRotation) {
             return;
         }
