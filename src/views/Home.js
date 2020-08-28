@@ -50,6 +50,8 @@ export default () => {
 
     useEffect(() => {
         async function askForDeviceOrientationPermission() {
+            console.log(navigator);
+            /*
             console.info('Checking some browser permissions...');
             const accelerometerPermissionStatus = await navigator.permissions.query(
                 {
@@ -69,8 +71,9 @@ export default () => {
             console.info({ accelerometerPermissionStatus });
             console.info({ magnetometerPermissionStatus });
             console.info({ gyroscopePermissionStatus });
+            */
 
-            console.info('Checking device orientation permissions...');
+            console.info('Checking device orientation permission...');
             if (typeof DeviceOrientation === 'undefined') {
                 console.error(
                     'DeviceMotionEvent is undefined. Is this a secure connection over HTTPS?'
