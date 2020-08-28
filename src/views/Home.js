@@ -63,6 +63,7 @@ export default () => {
 
                 if (permissionState === 'granted') {
                     console.info('Device orientation permission granted.');
+                    return true;
                 } else {
                     console.error('Device orientation permission denied.');
                 }
@@ -70,16 +71,22 @@ export default () => {
                 console.info(
                     'DeviceOrientationEvent.requestPermission is not a function. Can not ask for permission to use device orientation.'
                 );
+                return true;
             }
+
+            return false;
         }
 
-        askForDeviceOrientationPermission();
-
-        window.addEventListener(
-            'deviceorientation',
-            onDeviceOrientation,
-            false
-        );
+        askForDeviceOrientationPermission().then(granted => {
+            if (granted) {
+                console.info('Setting up device orientation listener...');
+                window.addEventListener(
+                    'deviceorientation',
+                    onDeviceOrientation,
+                    false
+                );
+            }
+        });
 
         return () => {
             window.removeEventListener(
