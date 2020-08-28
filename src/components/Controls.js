@@ -1,8 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useFrame, useThree, extend } from 'react-three-fiber';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { DeviceOrientationControls } from 'three/examples/jsm/controls/DeviceOrientationControls.js';
 
-extend({ OrbitControls });
+extend({ OrbitControls, DeviceOrientationControls });
 
 const simulateDeviceOrientation = (orientation, onDeviceOrientation) => {
     setInterval(
@@ -31,32 +32,41 @@ export default ({
     const onDeviceOrientation = event => {
         // deactivate orbit controls
         if (manualControls) {
-            setManualControls(false);
+            // setManualControls(false);
         }
 
         const { alpha, beta, gamma } = event;
+
+        var rotateDegrees = alpha;
+        // gamma: left to right
+        var leftToRight = gamma;
+        // beta: front back motion
+        var frontToBack = beta;
+
         const newTarget = [
-            targetRef.current[0] - gamma / 90, // up and down
-            targetRef.current[1] - beta / 180, // forward and backward
-            targetRef.current[2] - alpha / 360 // left and right
+            Math.max(-15, Math.min(15, targetRef.current[0] - alpha / 360)), // up and down
+            targetRef.current[1], //targetRef.current[1] - beta / 180, // forward and backward
+            targetRef.current[2] //targetRef.current[2] - gamma / 90 // left and right
         ];
-        console.log({ target, newTarget, alpha, beta, gamma });
+        console.log('target', target);
+        console.log('newTarget', newTarget);
+        console.log({ alpha, beta, gamma });
+        console.log('---');
 
         targetRef.current = newTarget;
         setTarget(newTarget);
     };
 
+    /*
     useEffect(() => {
-        /*
         simulateDeviceOrientation(
             [
-                Math.random() * 360,
-                Math.random() * 180 - 180,
+                // Math.random() * 360,
+                50, // Math.random() * 180 - 180,
                 Math.random() * 90 - 90
             ],
             onDeviceOrientation
         );
-        */
 
         window.addEventListener(
             'deviceorientation',
@@ -71,8 +81,13 @@ export default ({
             );
         };
     }, []);
+    */
+
+    const controls = new DeviceOrientationControls(camera);
 
     useFrame(() => {
+        controls.update();
+
         if (delayRotation) {
             return;
         }
