@@ -50,7 +50,7 @@ export default () => {
 
     useEffect(() => {
         async function askForDeviceOrientationPermission() {
-            console.log(navigator);
+            console.info(navigator.vendor, navigator);
             /*
             console.info('Checking some browser permissions...');
             const accelerometerPermissionStatus = await navigator.permissions.query(
