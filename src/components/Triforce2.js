@@ -13,7 +13,7 @@ function Triforce2() {
     model.scene.scale.set(0.007, 0.007, 0.007);
 
     return (
-        <mesh rotation={[0, Math.PI / 2, 0]}>
+        <mesh rotation={[0, Math.PI / 2, 0]} onClick={() => {}}>
             <primitive object={model.scene} position={[0, 0, 0]} />
         </mesh>
     );

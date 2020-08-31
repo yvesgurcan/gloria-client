@@ -56,3 +56,4 @@ Note that views are layered. As the user browses the application, 3D scenes are 
 -   https://codesandbox.io/s/xvvn4vxqnz
 -   https://codesandbox.io/examples/package/react-three-fiber
 -   https://github.com/takahirox/takahirox.github.io/blob/master/three.js.mmdeditor/examples/misc_controls_deviceorientation.html
+-   https://modelviewer.dev/examples/augmented-reality.html

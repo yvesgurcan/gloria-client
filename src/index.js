@@ -6,6 +6,7 @@ import packageJson from '../package.json';
 import attachUIConsole from './util/attachUIConsole';
 import Home from './views/Home';
 import TriforceRoom from './views/TriforceRoom';
+import AR from './views/AR';
 
 const rootElement = document.getElementById('root');
 
@@ -20,6 +21,11 @@ ReactDOM.render(
             component={({ history }) => {
                 // reconcile React Router history by making it available globally in the 3D menu
                 window.appHistory = history;
+
+                if (history.location.pathname === '/ar') {
+                    return null;
+                }
+
                 return <Home />;
             }}
         />
@@ -30,6 +36,11 @@ ReactDOM.render(
                         display={history.location.pathname === '/triforce'}
                     />
                 );
+            }}
+        />
+        <Route
+            component={({ history }) => {
+                return <AR display={history.location.pathname === '/ar'} />;
             }}
         />
     </HashRouter>,
