@@ -48,19 +48,10 @@ export default () => {
         }
     };
 
-    function requestOrientationPermission() {
+    async function requestOrientationPermission() {
         console.log('requestOrientationPermission');
-        DeviceOrientationEvent.requestPermission()
-            .then(response => {
-                console.log(response);
-                if (response == 'granted') {
-                    window.addEventListener('deviceorientation', e => {
-                        console.log('oi');
-                        // do something with e
-                    });
-                }
-            })
-            .catch(console.error);
+        const permission = await DeviceOrientationEvent.requestPermission();
+        console.log({ permission });
     }
 
     useEffect(() => {
@@ -140,13 +131,7 @@ export default () => {
         <span>
             <GlobalStyles />
             <br />
-            <button
-                type="checkbox"
-                onClick={() => {
-                    console.info('start');
-                    requestOrientationPermission();
-                }}
-            >
+            <button onClick={requestOrientationPermission}>
                 Enable access device orientation
             </button>
             <Canvas style={{ background: 'rgb(140, 140, 255)' }}>
