@@ -2,14 +2,14 @@
 
 ## Main dependencies
 
--   Three.js
--   React Three Fiber
--   `three-js-csg-es6`: ES6-compatible wrapper around Chandler Prall's Three.js Constructive Solid Geometry (CSG) port.
--   Styled Components
--   Eruda: debug tool intended for access of the JavaScript console in mobile
--   Webpack
--   Babel
--   Prettier config
+-   Three.js: A JavaScript 3D renderer for the browser.
+-   React Three Fiber: A wrapper around Three.js for React.
+-   `three-js-csg-es6`: A ES6-compatible wrapper around Chandler Prall's Three.js Constructive Solid Geometry (CSG) port to build complex 3D geometry (such as carving shapes in objects thanks to other objects).
+-   [model-viewer](https://github.com/google/model-viewer): A web component created by Google that supports augmented reality.
+-   Eruda: Debug tool intended for access of the JavaScript console in mobile.
+-   Styled Components.
+-   Webpack.
+-   Babel.
 
 ## Setup
 
@@ -57,3 +57,4 @@ Note that views are layered. As the user browses the application, 3D scenes are 
 -   https://codesandbox.io/examples/package/react-three-fiber
 -   https://github.com/takahirox/takahirox.github.io/blob/master/three.js.mmdeditor/examples/misc_controls_deviceorientation.html
 -   https://modelviewer.dev/examples/augmented-reality.html
+-   https://medium.com/@cwervo/everything-i-know-about-launching-ios-ar-quick-look-from-the-web-e7957f165c51

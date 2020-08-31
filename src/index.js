@@ -5,8 +5,8 @@ import { HashRouter, Route } from 'react-router-dom';
 import packageJson from '../package.json';
 import attachUIConsole from './util/attachUIConsole';
 import Home from './views/Home';
-import TriforceRoom from './views/TriforceRoom';
-import AR from './views/AR';
+import TriforceModal from './views/TriforceModal';
+import StandAloneAR from './views/StandAloneAR';
 
 const rootElement = document.getElementById('root');
 
@@ -29,20 +29,8 @@ ReactDOM.render(
                 return <Home />;
             }}
         />
-        <Route
-            component={({ history }) => {
-                return (
-                    <TriforceRoom
-                        display={history.location.pathname === '/triforce'}
-                    />
-                );
-            }}
-        />
-        <Route
-            component={({ history }) => {
-                return <AR display={history.location.pathname === '/ar'} />;
-            }}
-        />
+        <Route path="/triforce" component={TriforceModal} />
+        <Route path="/ar" component={StandAloneAR} />
     </HashRouter>,
     rootElement
 );
