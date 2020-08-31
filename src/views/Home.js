@@ -29,11 +29,48 @@ function Camera(props) {
 }
 
 export default () => {
+    const [loading, setLoading] = useState(true);
     const [orientationPermission, setOrientationPermission] = useState();
+
+    useEffect(() => {
+        const storageOrientationPermission = localStorage.getItem(
+            '3d-dome-orientationPermission'
+        );
+        if (storageOrientationPermission) {
+            setOrientationPermission(storageOrientationPermission);
+        }
+        setLoading(false);
+    });
 
     async function requestOrientationPermission() {
         console.info('requestOrientationPermission');
         try {
+            if (typeof DeviceOrientation === 'undefined') {
+                console.warn('DeviceOrientation is not defined.');
+                const permission = 'denied';
+                console.info({ permission });
+                setOrientationPermission(permission);
+                const storageOrientationPermission = localStorage.setItem(
+                    '3d-dome-orientationPermission',
+                    permission
+                );
+                return;
+            } else if (
+                typeof DeviceOrientation.requestPermission !== 'function'
+            ) {
+                console.warn(
+                    'DeviceOrientation.requestPermission is not a function.'
+                );
+                const permission = 'denied';
+                console.info({ permission });
+                setOrientationPermission(permission);
+                const storageOrientationPermission = localStorage.setItem(
+                    '3d-dome-orientationPermission',
+                    permission
+                );
+                return;
+            }
+
             const permission = await DeviceOrientationEvent.requestPermission();
             console.info({ permission });
             setOrientationPermission(permission);
@@ -45,6 +82,15 @@ export default () => {
 
     function isLocalHost() {
         return location.hostname === 'localhost';
+    }
+
+    if (loading) {
+        return (
+            <PermissionScreen>
+                <GlobalStyles />
+                Loading...
+            </PermissionScreen>
+        );
     }
 
     if (!orientationPermission) {
@@ -63,7 +109,7 @@ export default () => {
             <GlobalStyles />
             <Canvas style={{ background: 'rgb(140, 140, 255)' }}>
                 <Camera position={[0, 0, 0]} />
-                {orientationPermission ? null : isLocalHost() ? (
+                {orientationPermission !== 'denied' ? null : isLocalHost() ? (
                     <Controls />
                 ) : (
                     <ControlsLimited />
