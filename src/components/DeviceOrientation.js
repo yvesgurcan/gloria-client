@@ -10,6 +10,10 @@ export default () => {
 
     useEffect(() => {
         controlsReference.current.connect();
+
+        return () => {
+            controlsReference.current.disconnect();
+        };
     }, []);
 
     useFrame(({ gl, scene }) => {

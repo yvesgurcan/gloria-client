@@ -6,7 +6,6 @@ export default () => {
             src="https://raw.githubusercontent.com/yvesgurcan/3d-dome/master/public/triforce2/scene.gltf"
             ios-src="https://raw.githubusercontent.com/yvesgurcan/3d-dome/master/public/triforce.usdz"
             ar-modes="webxr scene-viewer quick-look"
-            ar-scale="auto"
             ar
             auto-rotate
             camera-controls

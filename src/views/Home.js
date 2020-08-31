@@ -48,9 +48,23 @@ export default () => {
         }
     };
 
+    function requestOrientationPermission() {
+        console.log('requestOrientationPermission');
+        DeviceOrientationEvent.requestPermission()
+            .then(response => {
+                console.log(response);
+                if (response == 'granted') {
+                    window.addEventListener('deviceorientation', e => {
+                        console.log('oi');
+                        // do something with e
+                    });
+                }
+            })
+            .catch(console.error);
+    }
+
     useEffect(() => {
         async function askForDeviceOrientationPermission() {
-            console.info(navigator.vendor, navigator);
             /*
             console.info('Checking some browser permissions...');
             const accelerometerPermissionStatus = await navigator.permissions.query(
@@ -76,10 +90,9 @@ export default () => {
             console.info('Checking device orientation permission...');
             if (typeof DeviceOrientation === 'undefined') {
                 console.error(
-                    'DeviceMotionEvent is undefined. Is this a secure connection over HTTPS?'
+                    'DeviceOrientation is undefined. Is this a secure connection over HTTPS?'
                 );
             } else if (
-                DeviceOrientation &&
                 typeof DeviceOrientation.requestPermission === 'function'
             ) {
                 const permissionState = await DeviceOrientation.requestPermission();
@@ -100,8 +113,8 @@ export default () => {
             return false;
         }
 
-        askForDeviceOrientationPermission().then(granted => {
-            if (granted) {
+        askForDeviceOrientationPermission().then(setupListener => {
+            if (setupListener) {
                 console.info('Setting up device orientation listener...');
                 window.addEventListener(
                     'deviceorientation',
@@ -126,6 +139,16 @@ export default () => {
     return (
         <span>
             <GlobalStyles />
+            <br />
+            <button
+                type="checkbox"
+                onClick={() => {
+                    console.info('start');
+                    requestOrientationPermission();
+                }}
+            >
+                Enable access device orientation
+            </button>
             <Canvas style={{ background: 'rgb(140, 140, 255)' }}>
                 <Camera position={[0, 0, 0]} />
                 {orientationControls ? null : isLocalHost() ? (
