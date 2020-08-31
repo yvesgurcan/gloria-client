@@ -45,33 +45,13 @@ export default () => {
     async function requestOrientationPermission() {
         console.info('requestOrientationPermission');
         try {
-            /*
-            if (typeof DeviceOrientation === 'undefined') {
-                console.warn('DeviceOrientation is not defined.');
-                const permission = 'denied';
-                console.info({ permission });
-                setOrientationPermission(permission);
-                localStorage.setItem(
-                    '3d-dome-orientationPermission',
-                    permission
-                );
-                return;
-            } else if (
-                typeof DeviceOrientation.requestPermission !== 'function'
-            ) {
-                console.warn(
-                    'DeviceOrientation.requestPermission is not a function.'
-                );
-                const permission = 'denied';
-                console.info({ permission });
-                setOrientationPermission(permission);
-                localStorage.setItem(
-                    '3d-dome-orientationPermission',
-                    permission
-                );
-                return;
+            // Android devices don't use requestPermission()
+            if (typeof DeviceOrientation.requestPermission !== 'function') {
+                const userAgent = navigator.userAgent.toLowerCase();
+                if (userAgent.includes('android')) {
+                    setOrientationPermission('granted');
+                }
             }
-            */
 
             const permission = await DeviceOrientationEvent.requestPermission();
             console.info({ permission });
