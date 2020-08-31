@@ -45,12 +45,13 @@ export default () => {
     async function requestOrientationPermission() {
         console.info('requestOrientationPermission');
         try {
+            /*
             if (typeof DeviceOrientation === 'undefined') {
                 console.warn('DeviceOrientation is not defined.');
                 const permission = 'denied';
                 console.info({ permission });
                 setOrientationPermission(permission);
-                const storageOrientationPermission = localStorage.setItem(
+                localStorage.setItem(
                     '3d-dome-orientationPermission',
                     permission
                 );
@@ -64,12 +65,13 @@ export default () => {
                 const permission = 'denied';
                 console.info({ permission });
                 setOrientationPermission(permission);
-                const storageOrientationPermission = localStorage.setItem(
+                localStorage.setItem(
                     '3d-dome-orientationPermission',
                     permission
                 );
                 return;
             }
+            */
 
             const permission = await DeviceOrientationEvent.requestPermission();
             console.info({ permission });
