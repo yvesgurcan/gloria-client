@@ -12,6 +12,7 @@ import Triforce from '../components/Triforce';
 import ScreenSupport from '../components/ScreenSupport';
 import Screen from '../components/Screen';
 import DomeFloor from '../components/DomeFloor';
+import PermissionScreen from '../components/PermissionScreen';
 
 function Camera(props) {
     const cameraReference = useRef();
@@ -27,121 +28,47 @@ function Camera(props) {
     return <perspectiveCamera ref={cameraReference} {...props} />;
 }
 
-function Camera2(props) {
-    const cameraReference = useRef();
-    const { setDefaultCamera } = useThree();
-    // Make the camera known to the system
-    useEffect(() => {
-        setDefaultCamera(cameraReference.current);
-    }, []);
-    // Update it every frame
-    useFrame(() => cameraReference.current.updateMatrixWorld());
-    return <perspectiveCamera ref={cameraReference} {...props} />;
-}
-
 export default () => {
-    const [orientationControls, setOrientationControls] = useState(false);
-
-    const onDeviceOrientation = event => {
-        if (!orientationControls) {
-            setOrientationControls(true);
-        }
-    };
+    const [orientationPermission, setOrientationPermission] = useState();
 
     async function requestOrientationPermission() {
-        console.log('requestOrientationPermission');
-        const permission = await DeviceOrientationEvent.requestPermission();
-        console.log({ permission });
-    }
-
-    useEffect(() => {
-        async function askForDeviceOrientationPermission() {
-            /*
-            console.info('Checking some browser permissions...');
-            const accelerometerPermissionStatus = await navigator.permissions.query(
-                {
-                    name: 'accelerometer'
-                }
-            );
-            const magnetometerPermissionStatus = await navigator.permissions.query(
-                {
-                    name: 'magnetometer'
-                }
-            );
-            const gyroscopePermissionStatus = await navigator.permissions.query(
-                {
-                    name: 'gyroscope'
-                }
-            );
-            console.info({ accelerometerPermissionStatus });
-            console.info({ magnetometerPermissionStatus });
-            console.info({ gyroscopePermissionStatus });
-            */
-
-            console.info('Checking device orientation permission...');
-            if (typeof DeviceOrientation === 'undefined') {
-                console.error(
-                    'DeviceOrientation is undefined. Is this a secure connection over HTTPS?'
-                );
-            } else if (
-                typeof DeviceOrientation.requestPermission === 'function'
-            ) {
-                const permissionState = await DeviceOrientation.requestPermission();
-
-                if (permissionState === 'granted') {
-                    console.info('Device orientation permission granted.');
-                    return true;
-                } else {
-                    console.error('Device orientation permission denied.');
-                }
-            } else {
-                console.info(
-                    'DeviceOrientation.requestPermission is not a function. Can not ask for permission to use device orientation.'
-                );
-                return true;
-            }
-
-            return false;
+        console.info('requestOrientationPermission');
+        try {
+            const permission = await DeviceOrientationEvent.requestPermission();
+            console.info({ permission });
+            setOrientationPermission(permission);
+        } catch (error) {
+            console.error({ error });
+            setOrientationPermission('denied');
         }
-
-        askForDeviceOrientationPermission().then(setupListener => {
-            if (setupListener) {
-                console.info('Setting up device orientation listener...');
-                window.addEventListener(
-                    'deviceorientation',
-                    onDeviceOrientation,
-                    false
-                );
-            }
-        });
-
-        return () => {
-            window.removeEventListener(
-                'deviceorientation',
-                onDeviceOrientation
-            );
-        };
-    }, []);
+    }
 
     function isLocalHost() {
         return location.hostname === 'localhost';
     }
 
+    if (!orientationPermission) {
+        return (
+            <PermissionScreen>
+                <GlobalStyles />
+                <button onClick={requestOrientationPermission}>
+                    Enable access device orientation
+                </button>
+            </PermissionScreen>
+        );
+    }
+
     return (
         <span>
             <GlobalStyles />
-            <br />
-            <button onClick={requestOrientationPermission}>
-                Enable access device orientation
-            </button>
             <Canvas style={{ background: 'rgb(140, 140, 255)' }}>
                 <Camera position={[0, 0, 0]} />
-                {orientationControls ? null : isLocalHost() ? (
+                {orientationPermission ? null : isLocalHost() ? (
                     <Controls />
                 ) : (
                     <ControlsLimited />
                 )}
-                {orientationControls && <DeviceOrientation />}
+                {orientationPermission === 'granted' && <DeviceOrientation />}
                 <group position={[4, 0, 0]} rotation={[0, -Math.PI, 0]}>
                     <ambientLight intensity={0.85} />
                     <spotLight
