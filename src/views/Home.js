@@ -1,69 +1,84 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { Canvas, useFrame, useThree } from 'react-three-fiber';
+import React, { useEffect, useState } from 'react';
+import { Canvas } from 'react-three-fiber';
 
 import GlobalStyles from '../components/GlobalStyles';
+import PermissionScreen from '../components/PermissionScreen';
+import Camera from '../components/Camera';
 import Controls from '../components/Controls';
 import ControlsLimited from '../components/ControlsLimited';
 import DeviceOrientation from '../components/DeviceOrientation';
-
 import DomeWalls from '../components/DomeWalls';
 import Pedestal from '../components/Pedestal';
 import Triforce from '../components/Triforce';
 import ScreenSupport from '../components/ScreenSupport';
 import Screen from '../components/Screen';
 import DomeFloor from '../components/DomeFloor';
-import PermissionScreen from '../components/PermissionScreen';
-
-function Camera(props) {
-    const cameraReference = useRef();
-    const { setDefaultCamera } = useThree();
-    // Make the camera known to the system
-    useEffect(() => {
-        setDefaultCamera(cameraReference.current);
-    }, []);
-    // Update it every frame
-    useFrame(() => {
-        cameraReference.current.updateMatrixWorld();
-    });
-    return <perspectiveCamera ref={cameraReference} {...props} />;
-}
 
 export default () => {
+    const [localHost, setLocalHost] = useState(false);
     const [loading, setLoading] = useState(true);
     const [orientationPermission, setOrientationPermission] = useState();
 
     useEffect(() => {
-        const storageOrientationPermission = localStorage.getItem(
-            '3d-dome-orientationPermission'
-        );
-        if (storageOrientationPermission) {
-            setOrientationPermission(storageOrientationPermission);
+        function getOrientationPermissionFromLocalStorage() {
+            const storageOrientationPermission = localStorage.getItem(
+                '3d-dome-orientationPermission'
+            );
+            if (storageOrientationPermission) {
+                setOrientationPermission(storageOrientationPermission);
+            }
         }
+
+        getOrientationPermissionFromLocalStorage();
         setLoading(false);
-    });
+    }, []);
+
+    useEffect(() => {
+        setLocalHost(isLocalHost());
+    }, []);
 
     async function requestOrientationPermission() {
-        console.info('requestOrientationPermission');
         try {
+            if (localHost) {
+                console.error(
+                    'Device orientation permissions can not be set on localhost (not secure). Sorry!'
+                );
+            }
+
             // Android devices don't use requestPermission()
             if (typeof DeviceOrientation.requestPermission !== 'function') {
                 const userAgent = navigator.userAgent.toLowerCase();
                 if (userAgent.includes('android')) {
+                    console.info(
+                        'Android device detected. Permission granted by default.'
+                    );
                     setOrientationPermission('granted');
+                    return;
                 }
             }
 
             const permission = await DeviceOrientationEvent.requestPermission();
             console.info({ permission });
             setOrientationPermission(permission);
+            localStorage.setItem('3d-dome-orientationPermission', permission);
         } catch (error) {
+            console.error(
+                'An error occurred while setting device orientation permission. Permission denied.'
+            );
             console.error({ error });
             setOrientationPermission('denied');
+            localStorage.setItem('3d-dome-orientationPermission', 'denied');
         }
     }
 
     function isLocalHost() {
-        return location.hostname === 'localhost';
+        if (location.hostname === 'localhost') {
+            console.info('This is localhost.');
+            return true;
+        }
+
+        console.info('This is not localhost.');
+        return false;
     }
 
     if (loading) {
@@ -91,7 +106,7 @@ export default () => {
             <GlobalStyles />
             <Canvas style={{ background: 'rgb(140, 140, 255)' }}>
                 <Camera position={[0, 0, 0]} />
-                {orientationPermission !== 'denied' ? null : isLocalHost() ? (
+                {orientationPermission !== 'denied' ? null : localHost ? (
                     <Controls />
                 ) : (
                     <ControlsLimited />
