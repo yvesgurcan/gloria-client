@@ -13,18 +13,14 @@ import Pointer from '../components/Pointer';
 const Wall = Block;
 const Pedestal = Block;
 
-export default () => {
+export default ({ color, to }) => {
     const size1 = 500;
     const size2 = 500;
     const bottom = -27;
     const offset = 15;
     return (
         <ViewLayer backgroundColor="rgb(140, 140, 255)" zIndex={600}>
-            <Route
-                exact
-                path="/inside"
-                render={() => <BackLink to="/">Back</BackLink>}
-            />
+            <BackLink to="/">Back</BackLink>
             <Canvas
                 camera={{
                     position: new Vector3(-2, 0, 0)
@@ -37,7 +33,7 @@ export default () => {
                     position={[10, 5, 0]}
                 />
                 <Wall
-                    color="rgb(0, 168, 224)"
+                    color={color}
                     x={-size1}
                     y={0}
                     z={0}
@@ -45,7 +41,7 @@ export default () => {
                     width={size1 / 2}
                 />
                 <Wall
-                    color="rgb(0, 168, 224)"
+                    color={color}
                     x={size1}
                     y={0}
                     z={0}
@@ -53,7 +49,7 @@ export default () => {
                     width={size1 / 2}
                 />
                 <Wall
-                    color="rgb(0, 168, 224)"
+                    color={color}
                     x={0}
                     y={size1 / 4}
                     z={0}
@@ -61,7 +57,7 @@ export default () => {
                     depth={size1 * 2}
                 />
                 <Wall
-                    color="rgb(100, 168, 224)"
+                    color={color}
                     x={offset}
                     y={-size1 / 4}
                     z={0}
@@ -69,7 +65,7 @@ export default () => {
                     depth={size1 * 2}
                 />
                 <Wall
-                    color="rgb(0, 168, 224)"
+                    color={color}
                     x={0}
                     y={0}
                     z={size2 / 2}
@@ -77,16 +73,16 @@ export default () => {
                     width={size1 / 2}
                 />
                 <Wall
-                    color="rgb(0, 168, 224)"
+                    color={color}
                     x={0}
                     y={0}
                     z={-size2 / 2}
                     depth={size1 * 2}
                     width={size1 / 2}
                 />
-                <Pointer to="/inside/pin1" x={23} y={bottom + offset} z={-18} />
-                <Pointer to="/inside/pin2" x={110} y={bottom} z={15} />
-                <Pointer to="/inside/pin3" x={70} y={bottom} z={50} />
+                <Pointer to={`${to}/pin1`} x={23} y={bottom + offset} z={-18} />
+                <Pointer to={`${to}/pin2`} x={110} y={bottom} z={15} />
+                <Pointer to={`${to}/pin3`} x={70} y={bottom} z={50} />
                 <Pedestal
                     color="rgb(50, 50, 50)"
                     x={30}

@@ -137,6 +137,7 @@ export default () => {
                     <Pedestal />
                     <Triforce />
                     <ScreenSupport
+                        to="/inside1"
                         position={[1.25, 0, 1.5]}
                         dimension={[0.1, 1, 0.6]}
                         rotation={[0, Math.PI / 4, 0]}
@@ -147,6 +148,7 @@ export default () => {
                     rotation={[0, Math.PI / 4, 0]}
                 />*/}
                     <ScreenSupport
+                        to="/inside2"
                         position={[1.25, 0, -1.5]}
                         dimension={[0.1, 1, 0.6]}
                         rotation={[0, -Math.PI / 4, 0]}
@@ -157,11 +159,13 @@ export default () => {
                     rotation={[0, -Math.PI / 4, 0]}
                 />*/}
                     <ScreenSupport
+                        to="/inside3"
                         position={[-1.5, 0, -1.25]}
                         dimension={[0.1, 1, 0.6]}
                         rotation={[0, -Math.PI / 8, 0]}
                     />
                     <ScreenSupport
+                        to="/inside4"
                         position={[-1.5, 0, 1.25]}
                         dimension={[0.1, 1, 0.6]}
                         rotation={[0, Math.PI / 8, 0]}

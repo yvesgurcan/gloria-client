@@ -8,6 +8,8 @@ import Home from './views/Home';
 import TriforceModal from './views/TriforceModal';
 import StandAloneAR from './views/StandAloneAR';
 import ToolOverlay from './components/ToolOverlay';
+import Inside from './components/Inside';
+import PinModal from './views/PinModal';
 
 const rootElement = document.getElementById('root');
 
@@ -43,6 +45,73 @@ ReactDOM.render(
         />
         <Route path="/triforce" component={TriforceModal} />
         <Route path="/ar" component={StandAloneAR} />
+        <Route
+            path="/inside1"
+            component={() => <Inside color="orange" to="/inside1" />}
+        />
+        <Route
+            path="/inside2"
+            component={() => <Inside color="blue" to="/inside2" />}
+        />
+        <Route
+            path="/inside3"
+            component={() => <Inside color="green" to="/inside3" />}
+        />
+        <Route
+            path="/inside4"
+            component={() => <Inside color="yellow" to="/inside4" />}
+        />
+
+        <Route
+            path="/inside1/pin1"
+            render={() => <PinModal to="/inside1" text="1" />}
+        />
+        <Route
+            path="/inside1/pin2"
+            render={() => <PinModal to="/inside1" text="2" />}
+        />
+        <Route
+            path="/inside1/pin3"
+            render={() => <PinModal to="/inside1" text="3" />}
+        />
+
+        <Route
+            path="/inside2/pin1"
+            render={() => <PinModal to="/inside2" text="A" />}
+        />
+        <Route
+            path="/inside2/pin2"
+            render={() => <PinModal to="/inside2" text="B" />}
+        />
+        <Route
+            path="/inside2/pin3"
+            render={() => <PinModal to="/inside2" text="C" />}
+        />
+
+        <Route
+            path="/inside3/pin1"
+            render={() => <PinModal to="/inside3" text="I" />}
+        />
+        <Route
+            path="/inside3/pin2"
+            render={() => <PinModal to="/inside3" text="II" />}
+        />
+        <Route
+            path="/inside3/pin3"
+            render={() => <PinModal to="/inside3" text="II" />}
+        />
+        <Route
+            path="/inside4/pin1"
+            render={() => <PinModal to="/inside4" text="a" />}
+        />
+        <Route
+            path="/inside4/pin2"
+            render={() => <PinModal to="/inside4" text="b" />}
+        />
+        <Route
+            path="/inside4/pin3"
+            render={() => <PinModal to="/inside4" text="c" />}
+        />
     </HashRouter>,
     rootElement
 );
