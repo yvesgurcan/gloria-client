@@ -68,11 +68,15 @@ ReactDOM.render(
         />
         <Route
             path="/inside/pin2"
-            render={() => <PinModal to="/" text="2" />}
+            render={() => <PinModal to="/" text="4" />}
         />
         <Route
             path="/inside/pin3"
             render={() => <PinModal to="/" text="3" />}
+        />
+        <Route
+            path="/inside/pin4"
+            render={() => <PinModal to="/" text="2" />}
         />
 
         <Route
