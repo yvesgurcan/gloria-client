@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Canvas } from 'react-three-fiber';
 
-import socket from '../util/socket';
 import ScreenMask from '../components/ScreenMask';
 import Camera from '../components/Camera';
 import Controls from '../components/Controls';
@@ -11,7 +10,7 @@ import Triforce from '../components/Triforce';
 import Kiosk from '../components/Kiosk';
 import DomeFloor from '../components/DomeFloor';
 
-export default () => {
+export default ({ io }) => {
     const [localHost, setLocalHost] = useState(false);
     const [loading, setLoading] = useState(true);
     const [orientationPermission, setOrientationPermission] = useState();
@@ -39,8 +38,6 @@ export default () => {
         setLocalHost(isLocalHost());
         getOrientationPermissionFromLocalStorage();
         setLoading(false);
-
-        socket.on('connect', console.log('oi'));
     }, []);
 
     async function requestOrientationPermission() {
@@ -123,25 +120,25 @@ export default () => {
                 <Pedestal />
                 <Triforce />
                 <Kiosk
-                    to="/kiosk1"
+                    to={`/kiosk1/${io.id}`}
                     position={[1.25, 0, 1.5]}
                     dimension={[0.1, 1, 0.6]}
                     rotation={[0, Math.PI / 4, 0]}
                 />
                 <Kiosk
-                    to="/kiosk2"
+                    to={`/kiosk2/${io.id}`}
                     position={[1.25, 0, -1.5]}
                     dimension={[0.1, 1, 0.6]}
                     rotation={[0, -Math.PI / 4, 0]}
                 />
                 <Kiosk
-                    to="/kiosk3"
+                    to={`/kiosk3/${io.id}`}
                     position={[-1.5, 0, -1.25]}
                     dimension={[0.1, 1, 0.6]}
                     rotation={[0, -Math.PI / 8, 0]}
                 />
                 <Kiosk
-                    to="/kiosk4"
+                    to={`/kiosk4/${io.id}`}
                     position={[-1.5, 0, 1.25]}
                     dimension={[0.1, 1, 0.6]}
                     rotation={[0, Math.PI / 8, 0]}

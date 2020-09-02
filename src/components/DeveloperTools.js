@@ -3,11 +3,13 @@ import styled from 'styled-components';
 import packageJson from '../../package.json';
 
 import attachUIConsole from '../util/attachUIConsole';
+import io from '../util/io';
 
 export default () => {
     useEffect(() => {
         attachUIConsole();
         console.info(packageJson.name, packageJson.version);
+        window.io = io;
     }, []);
 
     return (

@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 import ViewContent from './ViewContent';
 
-export default ({ children, ...props }) => (
+export default ({ back, children, ...props }) => (
     <ViewLayer {...props}>
         <ViewContent>
-            <Link to="/">Back</Link>
+            {back !== undefined ? back : <Link to="/">Back</Link>}
             {children}
         </ViewContent>
     </ViewLayer>
