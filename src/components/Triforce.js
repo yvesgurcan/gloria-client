@@ -4,7 +4,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
 const FRAME_ANIMATION_DURATION = 200;
 
-function Triforce({ to = '/triforce' }) {
+function Triforce({ to = '/pedestal' }) {
     const frameCount = useRef(0);
 
     const model = useLoader(

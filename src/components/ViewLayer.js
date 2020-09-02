@@ -1,6 +1,19 @@
+import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-export default styled.div`
+import ViewContent from './ViewContent';
+
+export default ({ children, ...props }) => (
+    <ViewLayer {...props}>
+        <ViewContent>
+            <Link to="/">Back</Link>
+            {children}
+        </ViewContent>
+    </ViewLayer>
+);
+
+const ViewLayer = styled.div`
     background: ${props => props.backgroundColor};
     position: absolute;
     top: 0;

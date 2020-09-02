@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Controls from './Controls';
+import OrbitControls from './OrbitControls';
 
 export default () => (
-    <Controls
+    <OrbitControls
         enableZoom={false}
         keys={{
             LEFT: 37, //left arrow

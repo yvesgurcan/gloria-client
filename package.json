@@ -44,6 +44,7 @@
     "dependencies": {
         "eruda": "^2.3.3",
         "react-three-fiber": "^4.2.20",
+        "socket.io-client": "^2.3.0",
         "three": "^0.119.1",
         "three-js-csg-es6": "^73.0.0"
     }
