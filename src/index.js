@@ -21,7 +21,7 @@ const App = () => {
             setIO(ioSocket);
         });
         ioSocket.on('message', message => {
-            console.log(roomLogRef.current, message);
+            console.log('Message received', { message });
             roomLogRef.current = [...roomLogRef.current, message];
             setRoomLog(roomLogRef.current);
         });

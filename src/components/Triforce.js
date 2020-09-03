@@ -7,10 +7,7 @@ const FRAME_ANIMATION_DURATION = 200;
 function Triforce({ to = '/pedestal' }) {
     const frameCount = useRef(0);
 
-    const model = useLoader(
-        GLTFLoader,
-        'https://raw.githubusercontent.com/yvesgurcan/3d-dome/master/public/triforce/scene.gltf'
-    );
+    const model = useLoader(GLTFLoader, 'public/triforce/scene.gltf');
 
     // This model is huuuuuuge!
     model.scene.scale.set(0.007, 0.007, 0.007);

@@ -18,8 +18,6 @@ export default ({ io, roomId }) => {
         }
     }, [io]);
 
-    console.log({ selected });
-
     function selectedBy(answer) {
         let result = [];
 
