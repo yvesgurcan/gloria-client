@@ -122,25 +122,25 @@ export default ({ io }) => {
                 <Pedestal />
                 <Triforce />
                 <Kiosk
-                    to={`/kiosk1/${io.id}`}
+                    to={`/kiosk1`}
                     position={[1.25, 0, 1.5]}
                     dimension={[0.1, 1, 0.6]}
                     rotation={[0, Math.PI / 4, 0]}
                 />
                 <Kiosk
-                    to={`/kiosk2/${io.id}`}
+                    to={`/kiosk2`}
                     position={[1.25, 0, -1.5]}
                     dimension={[0.1, 1, 0.6]}
                     rotation={[0, -Math.PI / 4, 0]}
                 />
                 <Kiosk
-                    to={`/kiosk3/${io.id}`}
+                    to={`/kiosk3`}
                     position={[-1.5, 0, -1.25]}
                     dimension={[0.1, 1, 0.6]}
                     rotation={[0, -Math.PI / 8, 0]}
                 />
                 <Kiosk
-                    to={`/kiosk4/${io.id}`}
+                    to={`/kiosk4`}
                     position={[-1.5, 0, 1.25]}
                     dimension={[0.1, 1, 0.6]}
                     rotation={[0, Math.PI / 8, 0]}

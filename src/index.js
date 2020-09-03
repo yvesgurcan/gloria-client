@@ -37,31 +37,31 @@ const App = () => {
                     }}
                 />
                 <Route
-                    path="/pedestal/:userId"
+                    path="/pedestal"
                     component={() => (
                         <Pedestal color="rgb(0, 168, 224, 0.75)" />
                     )}
                 />
                 <Route
-                    path="/kiosk1/:userId"
+                    path="/kiosk1"
                     component={() => (
                         <Kiosk color="orange" io={io} roomLog={roomLog} />
                     )}
                 />
                 <Route
-                    path="/kiosk2/:userId"
+                    path="/kiosk2"
                     component={() => (
                         <Kiosk color="blue" io={io} roomLog={roomLog} />
                     )}
                 />
                 <Route
-                    path="/kiosk3/:userId"
+                    path="/kiosk3"
                     component={() => (
                         <Kiosk color="green" io={io} roomLog={roomLog} />
                     )}
                 />
                 <Route
-                    path="/kiosk4/:userId"
+                    path="/kiosk4"
                     component={() => (
                         <Kiosk
                             color="rgb(180, 180, 0)"
