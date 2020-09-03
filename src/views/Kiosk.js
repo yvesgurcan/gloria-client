@@ -2,6 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { useLocation } from 'react-router';
 
 import ViewLayer from '../components/ViewLayer';
+import Quiz from '../components/Quiz';
 
 export default ({ color, io, roomLog }) => {
     const [input, setInput] = useState('something');
@@ -35,27 +36,26 @@ export default ({ color, io, roomLog }) => {
         if (search.indexOf('?join=') > -1) {
             console.log(`Request to join ${roomId}.`);
             io.emit('joinRoom', roomId);
-            // User is using an old URL
         }
     }, [io]);
-
-    console.log({ roomId, link, io });
 
     return (
         <ViewLayer zIndex={800} backgroundColor={color}>
             <div>
-                <br />
+                <Quiz io={io} roomId={roomId} />
                 Send this link to play with your friends:{' '}
                 <a target="_blank" href={link}>
                     {link}
                 </a>
                 <br />
                 <br />
+                <hr />
+                <br />
                 <div>Your ID: {io && io.id}</div>
                 <br />
                 <br />
                 <div>
-                    Room activity:
+                    Messages:
                     <div>
                         {roomLog.map(message => (
                             <div key={Math.random()}>{message}</div>

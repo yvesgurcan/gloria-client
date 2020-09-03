@@ -19,7 +19,7 @@ const ViewLayer = styled.div`
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     box-sizing: border-box;
     z-index: ${props => props.zIndex};
     color: white;
