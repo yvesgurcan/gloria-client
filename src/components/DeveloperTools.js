@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import FPSStats from 'react-fps-stats';
 import styled from 'styled-components';
 import packageJson from '../../package.json';
 
@@ -14,7 +15,8 @@ export default () => {
 
     return (
         <DeveloperTools>
-            {packageJson.version}{' '}
+            {packageJson.version}
+            <FPSStats />{' '}
             <button
                 onClick={() => {
                     localStorage.removeItem('3d-dome-orientationPermission');
