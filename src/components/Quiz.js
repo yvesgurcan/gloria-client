@@ -21,15 +21,9 @@ export default ({ io, roomId }) => {
     console.log({ selected });
 
     function selectedBy(answer) {
-        let result = '';
+        let result = [];
 
         Object.keys(selected).forEach(userId => {
-            console.log(
-                userId,
-                selected[userId],
-                answer,
-                selected[userId] && selected[userId] === answer
-            );
             if (selected[userId] && selected[userId] === answer) {
                 result = [...result, userId];
             }
@@ -44,22 +38,31 @@ export default ({ io, roomId }) => {
 
     const QuestionComponent = (
         <div>
-            When did <i>Wonder</i> Woman make her first appearnace?
+            When did <i>Wonder Woman</i> make her first appearance?
         </div>
     );
-    const answers = [1941, 2010, 1977, 1960];
+    const answers = [1912, 2010, 1941, 1963];
 
+    console.log(roomId);
     return (
         <Quiz>
             <Question>{QuestionComponent}</Question>
             {answers.map(answer => {
-                console.log(selectedBy(answer));
                 const selectors = selectedBy(answer);
                 return (
-                    <Answer key={answer} onClick={() => emitAnswer(answer)}>
-                        {answer}
+                    <Answer
+                        key={answer}
+                        selectedByUser={
+                            io
+                                ? selectedBy(answer).filter(
+                                      userId => userId === io.id
+                                  ).length > 0
+                                : false
+                        }
+                    >
+                        <span onClick={() => emitAnswer(answer)}>{answer}</span>
                         <Selectors>
-                            {selectors
+                            {selectors.length > 0
                                 ? `Selected by: ${selectors.join(', ')}`
                                 : ''}
                         </Selectors>
@@ -83,7 +86,15 @@ const Quiz = styled.div`
 
 const Answer = styled.div`
     padding: 1rem;
-    cursor: pointer;
+
+    span {
+        cursor: pointer;
+        ${props => (props.selectedByUser ? 'color: black;' : '')}
+
+        :hover {
+            color: black;
+        }
+    }
 `;
 
 const Selectors = styled.div`

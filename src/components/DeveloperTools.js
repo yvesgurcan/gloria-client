@@ -30,9 +30,14 @@ export default () => {
 };
 
 const DeveloperTools = styled.div`
-    position: absolute;
+    position: fixed;
     bottom: 1rem;
     left: 1rem;
     color: white;
     z-index: 9999;
+    background: rgb(0, 0, 0, 0.3);
+    padding: 0.3rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 0.5rem;
 `;
