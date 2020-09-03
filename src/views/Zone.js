@@ -49,7 +49,9 @@ export default ({ io }) => {
             }
 
             // Android devices don't use requestPermission()
-            if (typeof DeviceOrientation.requestPermission !== 'function') {
+            if (
+                typeof DeviceOrientationEvent.requestPermission !== 'function'
+            ) {
                 const userAgent = navigator.userAgent.toLowerCase();
                 if (userAgent.includes('android')) {
                     console.info(
@@ -68,7 +70,7 @@ export default ({ io }) => {
             console.error(
                 'An error occurred while setting device orientation permission. Permission denied.'
             );
-            console.error({ error });
+            console.error(error);
             setOrientationPermission('denied');
             localStorage.setItem('3d-dome-orientationPermission', 'denied');
         }
