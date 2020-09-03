@@ -1,6 +1,9 @@
 import socketIOClient from 'socket.io-client';
 
-const WEBSOCKET_SERVER_URL = 'http://localhost:3000';
+const WEBSOCKET_SERVER_URL =
+    location.hostname === 'localhost'
+        ? 'http://localhost:3000'
+        : 'http://54.189.2.73:3000/';
 
 const socket = socketIOClient(WEBSOCKET_SERVER_URL);
 
