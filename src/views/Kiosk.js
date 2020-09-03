@@ -39,6 +39,8 @@ export default ({ color, io, roomLog }) => {
         }
     }, [io]);
 
+    console.log({ roomId, link, io });
+
     return (
         <ViewLayer zIndex={800} backgroundColor={color}>
             <div>

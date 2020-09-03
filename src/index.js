@@ -16,7 +16,10 @@ const App = () => {
     const roomLogRef = useRef([]);
     const [io, setIO] = useState();
     useEffect(() => {
-        ioSocket.on('connect', setIO(ioSocket));
+        ioSocket.on('connect', () => {
+            ioSocket.ready = true; // necessary to update components
+            setIO(ioSocket);
+        });
         ioSocket.on('message', message => {
             console.log(roomLogRef.current, message);
             roomLogRef.current = [...roomLogRef.current, message];
