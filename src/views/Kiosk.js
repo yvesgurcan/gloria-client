@@ -54,7 +54,8 @@ export default ({ color, io, roomLog }) => {
                 <br />
                 <br />
                 <form
-                    onSubmit={() => {
+                    onSubmit={event => {
+                        event.preventDefault();
                         io.emit('message', {
                             input: `User ${io.id} said: ${input}`,
                             roomId
