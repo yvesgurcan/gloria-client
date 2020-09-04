@@ -98,13 +98,10 @@ export default ({ io }) => {
                 orientationPermission={orientationPermission}
                 localHost={localHost}
             />
+            <Triforce pathModel={'triforce4'} position={[2, 1, 0]} />
             <group position={[4, 0, 0]} rotation={[0, -Math.PI, 0]}>
                 <ambientLight intensity={0.85} />
-                <spotLight
-                    color="white"
-                    intensity={0.5}
-                    position={[-20, 20, -5]}
-                />
+                <spotLight color="red" intensity={1} position={[5, 5, 0]} />
                 <directionalLight
                     color="white"
                     intensity={0.1}
@@ -148,9 +145,7 @@ export default ({ io }) => {
                     rotation={[0, Math.PI / 8, 0]}
                 />
                 <Pedestal />
-                <Triforce />
-                <Triforce />
-                <Triforce />
+                <Triforce modelPath="triforce" position={[0, 0, 0.5]} />
             </group>
         </Canvas>
     );

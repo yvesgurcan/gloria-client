@@ -4,15 +4,16 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
 const FRAME_ANIMATION_DURATION = 200;
 
-function Triforce({ to = '/pedestal' }) {
+function Triforce({ to = '/pedestal', position, modelPath = 'triforce' }) {
     const frameCount = useRef(0);
 
-    const model = useLoader(GLTFLoader, 'public/triforce/scene.gltf');
+    const model = useLoader(GLTFLoader, `public/${modelPath}/scene.gltf`);
 
     // This model is huuuuuuge!
     model.scene.scale.set(0.007, 0.007, 0.007);
 
     useFrame(() => {
+        /*
         model.scene.rotation.y += 0.02;
 
         // Moves the triforce up and down based on the number of the
@@ -29,7 +30,10 @@ function Triforce({ to = '/pedestal' }) {
 
             frameCount.current = frameCount.current - 1;
         }
+        */
     });
+
+    console.log(modelPath);
 
     return (
         <mesh
@@ -37,13 +41,13 @@ function Triforce({ to = '/pedestal' }) {
             onClick={() => window.appHistory.push(to)}
             onPointerUp={() => window.appHistory.push(to)}
         >
-            <primitive object={model.scene} position={[0, 0, 0.5]} />
+            <primitive object={model.scene} position={position} />
         </mesh>
     );
 }
 
-export default () => (
+export default props => (
     <Suspense fallback={null}>
-        <Triforce />
+        <Triforce {...props} />
     </Suspense>
 );

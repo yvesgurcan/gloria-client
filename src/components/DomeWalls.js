@@ -7,7 +7,9 @@ export default () => {
     const domeWallMesh = useMemo(() => {
         // Build geometry
         const outerCylinder = new Mesh(new CylinderGeometry(6, 6, 0.4, 60, 4));
-        const innerCylinder = new Mesh(new CylinderGeometry(5, 5, 0.4, 60, 4));
+        const innerCylinder = new Mesh(
+            new CylinderGeometry(5.1, 5.1, 0.4, 60, 4)
+        );
         const icBSP = new ThreeBSP(innerCylinder);
         const ocBSP = new ThreeBSP(outerCylinder);
 
