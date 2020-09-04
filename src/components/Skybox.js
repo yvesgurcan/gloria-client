@@ -5,7 +5,7 @@ import { useThree } from 'react-three-fiber';
 export default () => {
     const { scene } = useThree();
     const loader = new CubeTextureLoader();
-    // The CubeTextureLoader load method takes an array of urls representing all 6 sides of the cube.
+    // The CubeTextureLoader load method takes an array of URLs representing all 6 sides of the cube.
     const texture = loader.load([
         'public/space-skybox/1.jpg',
         'public/space-skybox/2.jpg',
