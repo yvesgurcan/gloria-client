@@ -149,6 +149,8 @@ export default ({ io }) => {
                 />
                 <Pedestal />
                 <Triforce />
+                <Triforce />
+                <Triforce />
             </group>
         </Canvas>
     );
