@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Canvas } from 'react-three-fiber';
 
+import Skybox from '../components/Skybox';
 import ScreenMask from '../components/ScreenMask';
 import Camera from '../components/Camera';
 import Controls from '../components/Controls';
@@ -91,7 +92,7 @@ export default ({ io }) => {
     }
 
     return (
-        <Canvas style={{ background: 'rgb(140, 140, 255)' }}>
+        <Canvas>
             <Camera position={[0, 0, 0]} />
             <Controls
                 orientationPermission={orientationPermission}
@@ -119,8 +120,9 @@ export default ({ io }) => {
                     intensity={0.1}
                     position={[10, 6, 5]}
                 />
-                <Pedestal />
-                <Triforce />
+                <Skybox />
+                <DomeFloor />
+                <DomeWalls />
                 <Kiosk
                     to={`/kiosk1`}
                     position={[1.25, 0, 1.5]}
@@ -145,8 +147,8 @@ export default ({ io }) => {
                     dimension={[0.1, 1, 0.6]}
                     rotation={[0, Math.PI / 8, 0]}
                 />
-                <DomeFloor />
-                <DomeWalls />
+                <Pedestal />
+                <Triforce />
             </group>
         </Canvas>
     );

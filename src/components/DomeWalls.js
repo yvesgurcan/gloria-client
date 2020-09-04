@@ -5,16 +5,16 @@ import { Mesh, CylinderGeometry } from 'three';
 
 export default () => {
     const domeWallMesh = useMemo(() => {
-        // build geometry
-        const outerCylinder = new Mesh(new CylinderGeometry(6, 6, 20, 60, 4));
-        const innerCylinder = new Mesh(new CylinderGeometry(5, 5, 20, 60, 4));
+        // Build geometry
+        const outerCylinder = new Mesh(new CylinderGeometry(6, 6, 0.4, 60, 4));
+        const innerCylinder = new Mesh(new CylinderGeometry(5, 5, 0.4, 60, 4));
         const icBSP = new ThreeBSP(innerCylinder);
         const ocBSP = new ThreeBSP(outerCylinder);
 
-        // carve outer cylinder with inner cylinder
+        // Carve outer cylinder with inner cylinder
         const carvedCylinder = ocBSP.subtract(icBSP);
 
-        // create mesh
+        // Create mesh
         const mesh = carvedCylinder.toMesh();
         mesh.material = new Three.MeshPhongMaterial({
             specular: 0x1a1a1a,
@@ -22,13 +22,14 @@ export default () => {
             flatShading: Three.FlatShading
         });
 
-        // apply texture to mesh
+        // Apply texture to mesh
         const texture = new Three.TextureLoader().load(
             'https://raw.githubusercontent.com/yvesgurcan/3d-dome/master/public/metal.jpg'
         );
         mesh.material.map = texture;
 
-        mesh.position.y = 9.48;
+        // Adjust position to stick to the floor of the dome
+        mesh.position.y = -0.3;
 
         return mesh;
     });
