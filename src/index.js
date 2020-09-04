@@ -15,6 +15,10 @@ const App = () => {
     const [roomLog, setRoomLog] = useState([]);
     const roomLogRef = useRef([]);
     const [io, setIO] = useState();
+
+    const selectedRef = useRef({});
+    const [selected, setSelected] = useState({});
+
     useEffect(() => {
         ioSocket.on('connect', () => {
             ioSocket.ready = true; // necessary to update components
@@ -48,19 +52,40 @@ const App = () => {
                 <Route
                     path="/kiosk1"
                     component={() => (
-                        <Kiosk color="orange" io={io} roomLog={roomLog} />
+                        <Kiosk
+                            color="orange"
+                            io={io}
+                            roomLog={roomLog}
+                            selectedRef={selectedRef}
+                            selected={selected}
+                            setSelected={setSelected}
+                        />
                     )}
                 />
                 <Route
                     path="/kiosk2"
                     component={() => (
-                        <Kiosk color="blue" io={io} roomLog={roomLog} />
+                        <Kiosk
+                            color="blue"
+                            io={io}
+                            roomLog={roomLog}
+                            selectedRef={selectedRef}
+                            selected={selected}
+                            setSelected={setSelected}
+                        />
                     )}
                 />
                 <Route
                     path="/kiosk3"
                     component={() => (
-                        <Kiosk color="green" io={io} roomLog={roomLog} />
+                        <Kiosk
+                            color="green"
+                            io={io}
+                            roomLog={roomLog}
+                            selectedRef={selectedRef}
+                            selected={selected}
+                            setSelected={setSelected}
+                        />
                     )}
                 />
                 <Route
@@ -70,6 +95,9 @@ const App = () => {
                             color="rgb(180, 180, 0)"
                             io={io}
                             roomLog={roomLog}
+                            selectedRef={selectedRef}
+                            selected={selected}
+                            setSelected={setSelected}
                         />
                     )}
                 />

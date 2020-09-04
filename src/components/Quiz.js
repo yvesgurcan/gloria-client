@@ -1,9 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import faker from 'faker';
 
-export default ({ io, roomId }) => {
-    const selectedRef = useRef();
-    const [selected, setSelected] = useState({});
+export default ({ io, roomId, selectedRef, selected, setSelected }) => {
+    useEffect(() => {
+        console.log('mounted');
+    }, []);
 
     useEffect(() => {
         if (io) {
@@ -21,9 +23,17 @@ export default ({ io, roomId }) => {
     function selectedBy(answer) {
         let result = [];
 
+        if (!selected) {
+            return [];
+        }
+
         Object.keys(selected).forEach(userId => {
             if (selected[userId] && selected[userId] === answer) {
-                result = [...result, userId];
+                faker.seed(
+                    userId.split().map(character => character.charCodeAt(0))
+                );
+                const fakeName = faker.name.findName();
+                result = [...result, fakeName];
             }
         });
 
@@ -41,7 +51,6 @@ export default ({ io, roomId }) => {
     );
     const answers = [1912, 2010, 1941, 1963];
 
-    console.log(roomId);
     return (
         <Quiz>
             <Question>{QuestionComponent}</Question>

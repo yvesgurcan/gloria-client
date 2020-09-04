@@ -1,12 +1,15 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useLocation } from 'react-router';
 import styled from 'styled-components';
+import faker from 'faker';
 
 import ViewLayer from '../components/ViewLayer';
 import Quiz from '../components/Quiz';
 
-export default ({ color, io, roomLog }) => {
+export default ({ color, io, roomLog, selectedRef, selected, setSelected }) => {
+    const [name, setName] = useState('');
     const [input, setInput] = useState('something');
+
     const { search, pathname } = useLocation();
 
     const roomId = useMemo(() => {
@@ -29,6 +32,14 @@ export default ({ color, io, roomLog }) => {
     }, [io, roomId]);
 
     useEffect(() => {
+        if (io && io.id) {
+            faker.seed(io.id.split().map(character => character.charCodeAt(0)));
+            const fakeName = faker.name.findName();
+            setName(fakeName);
+        }
+    }, [io]);
+
+    useEffect(() => {
         if (!io || !io.id) {
             return;
         }
@@ -44,7 +55,7 @@ export default ({ color, io, roomLog }) => {
     return (
         <ViewLayer zIndex={800} backgroundColor={color}>
             <Content>
-                <Centered>Welcome, {io && io.id}!</Centered>
+                <Centered>Welcome, {name}!</Centered>
                 <br />
                 <Centered>
                     Send this link to your friends to invite them to play with
@@ -53,25 +64,33 @@ export default ({ color, io, roomLog }) => {
                         {link}
                     </a>
                 </Centered>
-                <Quiz io={io} roomId={roomId} />
+                <Quiz
+                    io={io}
+                    roomId={roomId}
+                    selectedRef={selectedRef}
+                    selected={selected}
+                    setSelected={setSelected}
+                />
                 <hr />
                 <br />
-                <div>
-                    Messages:
-                    <br />
+                {roomLog.length > 0 && (
                     <div>
-                        {roomLog.map(message => (
-                            <div key={Math.random()}>{message}</div>
-                        ))}
+                        <b>Messages:</b>
+                        <br />
+                        <div>
+                            {roomLog.map(message => (
+                                <div key={Math.random()}>{message}</div>
+                            ))}
+                        </div>
                     </div>
-                </div>
+                )}
                 <br />
                 <br />
                 <form
                     onSubmit={event => {
                         event.preventDefault();
                         io.emit('message', {
-                            input: `${io.id} said: ${input}`,
+                            input: `${name} said: ${input}`,
                             roomId
                         });
                         setInput('');
@@ -83,7 +102,7 @@ export default ({ color, io, roomLog }) => {
                             value={input}
                             onChange={event => setInput(event.target.value)}
                         />
-                        <button>Send</button>
+                        <button type="submit">Send</button>
                     </label>
                 </form>
             </Content>
