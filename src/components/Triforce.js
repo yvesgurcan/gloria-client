@@ -13,7 +13,6 @@ function Triforce({ to = '/pedestal', position, modelPath = 'triforce' }) {
     model.scene.scale.set(0.007, 0.007, 0.007);
 
     useFrame(() => {
-        /*
         model.scene.rotation.y += 0.02;
 
         // Moves the triforce up and down based on the number of the
@@ -30,7 +29,6 @@ function Triforce({ to = '/pedestal', position, modelPath = 'triforce' }) {
 
             frameCount.current = frameCount.current - 1;
         }
-        */
     });
 
     console.log(modelPath);
