@@ -101,7 +101,11 @@ export default ({ io }) => {
             <Triforce pathModel={'triforce4'} position={[2, 1, 0]} />
             <group position={[4, 0, 0]} rotation={[0, -Math.PI, 0]}>
                 <ambientLight intensity={0.85} />
-                <spotLight color="red" intensity={1} position={[5, 5, 0]} />
+                <spotLight
+                    color="white"
+                    intensity={0.1}
+                    position={[-20, 20, 0]}
+                />
                 <directionalLight
                     color="white"
                     intensity={0.1}
