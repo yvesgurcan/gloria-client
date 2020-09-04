@@ -48,7 +48,7 @@ This command will run your tests, create a production build at the root of your 
 
 Note that views are layered. As the user browses the application, 3D scenes are merely obfuscated and still running in the background.
 
-# Inspiration
+# Inspiration and useful links
 
 -   https://www.youtube.com/watch?v=2LwLI9N0N7o
 -   https://codesandbox.io/s/house-react-three-fiber-86tzx?file=/src/styles.css:0-224
@@ -59,3 +59,4 @@ Note that views are layered. As the user browses the application, 3D scenes are 
 -   https://github.com/takahirox/takahirox.github.io/blob/master/three.js.mmdeditor/examples/misc_controls_deviceorientation.html
 -   https://modelviewer.dev/examples/augmented-reality.html
 -   https://medium.com/@cwervo/everything-i-know-about-launching-ios-ar-quick-look-from-the-web-e7957f165c51
+-   https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0
