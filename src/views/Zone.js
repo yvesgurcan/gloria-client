@@ -10,6 +10,7 @@ import Pedestal from '../components/Pedestal';
 import TestModel from '../components/TestModel';
 import Kiosk from '../components/Kiosk';
 import DomeFloor from '../components/DomeFloor';
+import OrbitingLights from '../components/OrbitingLights';
 
 export default ({ io }) => {
     const [localHost, setLocalHost] = useState(false);
@@ -100,11 +101,7 @@ export default ({ io }) => {
             />
             <group position={[4, 0, 0]} rotation={[0, -Math.PI, 0]}>
                 <ambientLight intensity={0.85} />
-                <spotLight
-                    color="white"
-                    intensity={0.1}
-                    position={[-20, 20, 0]}
-                />
+                <OrbitingLights />
                 <directionalLight
                     color="white"
                     intensity={0.1}
@@ -117,7 +114,7 @@ export default ({ io }) => {
                 />
                 <directionalLight
                     color="white"
-                    intensity={0.1}
+                    intensity={0.2}
                     position={[10, 6, 5]}
                 />
                 <Skybox />

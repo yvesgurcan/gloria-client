@@ -10,7 +10,7 @@ export default () => {
                 color="rgb(46, 46, 46)"
                 metalness={1}
                 specular={0x1a1a1a}
-                shininess={100}
+                shininess={50}
                 side={Three.DoubleSide}
             />
         </mesh>
