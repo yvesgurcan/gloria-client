@@ -8,6 +8,7 @@ import DeveloperTools from './components/DeveloperTools';
 import Zone from './views/Zone';
 import Kiosk from './views/Kiosk';
 import Pedestal from './views/Pedestal';
+import Hat from './views/Hat';
 
 const rootElement = document.getElementById('root');
 
@@ -47,6 +48,12 @@ const App = () => {
                     path="/pedestal"
                     component={() => (
                         <Pedestal color="rgb(0, 168, 224, 0.75)" />
+                    )}
+                />
+                <Route
+                    path="/hat"
+                    component={() => (
+                        <Hat color="rgb(100, 100, 100, 0.75)" />
                     )}
                 />
                 <Route

@@ -152,6 +152,16 @@ export default ({ io }) => {
                     to='/pedestal'
                     modelPath='tf7/att_pg_manniTest_low.glb'
                     position={[0.05, -0.23, 0.5]} />
+                <TestModel
+                    modelPath='tf7/pong_arcade_cabin/scene.gltf'
+                    position={[1, 0.5, 3]}
+                    rotation={[0, 1.8, 0]}
+                    scale={0.0008} />
+                <TestModel
+                    to='/hat'
+                    modelPath='tf7/weathered_pith_hat/scene.gltf'
+                    position={[-2.1, 0, 2.1]}
+                    scale={0.005} />
             </group>
         </Canvas>
     );
