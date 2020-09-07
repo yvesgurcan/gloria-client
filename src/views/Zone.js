@@ -7,7 +7,7 @@ import Camera from '../components/Camera';
 import Controls from '../components/Controls';
 import DomeWalls from '../components/DomeWalls';
 import Pedestal from '../components/Pedestal';
-import Triforce from '../components/Triforce';
+import TestModel from '../components/TestModel';
 import Kiosk from '../components/Kiosk';
 import DomeFloor from '../components/DomeFloor';
 
@@ -98,7 +98,6 @@ export default ({ io }) => {
                 orientationPermission={orientationPermission}
                 localHost={localHost}
             />
-            <Triforce pathModel={'triforce4'} position={[2, 1, 0]} />
             <group position={[4, 0, 0]} rotation={[0, -Math.PI, 0]}>
                 <ambientLight intensity={0.85} />
                 <spotLight
@@ -126,30 +125,36 @@ export default ({ io }) => {
                 <DomeWalls />
                 <Kiosk
                     to={`/kiosk1`}
-                    position={[1.25, 0, 1.5]}
-                    dimension={[0.1, 1, 0.6]}
+                    position={[1.25, 0.3, 1.5]}
+                    dimension={[0.1, 1.7, 0.9]}
                     rotation={[0, Math.PI / 4, 0]}
                 />
                 <Kiosk
                     to={`/kiosk2`}
-                    position={[1.25, 0, -1.5]}
-                    dimension={[0.1, 1, 0.6]}
+                    position={[1.25, 0.3, -1.5]}
+                    dimension={[0.1, 1.7, 0.9]}
                     rotation={[0, -Math.PI / 4, 0]}
                 />
                 <Kiosk
                     to={`/kiosk3`}
-                    position={[-1.5, 0, -1.25]}
-                    dimension={[0.1, 1, 0.6]}
+                    position={[-1.5, 0.3, -1.25]}
+                    dimension={[0.1, 1.7, 0.9]}
                     rotation={[0, -Math.PI / 8, 0]}
                 />
                 <Kiosk
                     to={`/kiosk4`}
-                    position={[-1.5, 0, 1.25]}
-                    dimension={[0.1, 1, 0.6]}
+                    position={[-1.5, 0.3, 1.25]}
+                    dimension={[0.1, 1.7, 0.9]}
                     rotation={[0, Math.PI / 8, 0]}
                 />
                 <Pedestal />
-                <Triforce modelPath="triforce" position={[0, 0, 0.5]} />
+                <TestModel
+                    modelPath='tf7/wings.glb'
+                    position={[0.06, -0.3, 0.7]} />
+                <TestModel
+                    to='/pedestal'
+                    modelPath='tf7/att_pg_manniTest_low.glb'
+                    position={[0.05, -0.23, 0.5]} />
             </group>
         </Canvas>
     );
