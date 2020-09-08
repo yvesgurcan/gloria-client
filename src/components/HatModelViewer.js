@@ -4,6 +4,6 @@ import ModelViewer from './ModelViewer';
 export default () => (
     <ModelViewer
         src="public/tf7/weathered_pith_hat/scene.gltf"
-        ios-src="public/tf7/Weathered_Pith_Hat.usdz"
+        ios-src="public/tf7/hat.reality"
     />
 );
