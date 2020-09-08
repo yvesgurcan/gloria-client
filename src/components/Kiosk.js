@@ -3,6 +3,7 @@ import React from 'react';
 import VideoScreen from './VideoScreen';
 
 export default ({
+    href = '',
     to = '',
     video = false,
     color = 'rgb(200, 200, 200)',
@@ -16,8 +17,16 @@ export default ({
                 <mesh
                     position={position}
                     {...props}
-                    onClick={() => !video && window.appHistory.push(to)}
-                    onPointerUp={() => !video && window.appHistory.push(to)}
+                    onClick={() =>
+                        href
+                            ? (window.location.href = href)
+                            : !video && window.appHistory.push(to)
+                    }
+                    onPointerUp={() =>
+                        href
+                            ? (window.location.href = href)
+                            : !video && window.appHistory.push(to)
+                    }
                 >
                     <boxBufferGeometry attach="geometry" args={dimension} />
                     <meshPhongMaterial

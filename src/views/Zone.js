@@ -98,6 +98,22 @@ export default ({ io }) => {
         );
     }
 
+    function getSmsUrl() {
+        const ua = navigator.userAgent.toLowerCase();
+        let url;
+
+        if (ua.indexOf('iphone') > -1 || ua.indexOf('ipad') > -1)
+            url =
+                'sms:;body=' +
+                encodeURIComponent('Bonjour ! How can I help you?');
+        else
+            url =
+                'sms:?body=' +
+                encodeURIComponent('Bonjour ! How can I help you?');
+
+        return url;
+    }
+
     return (
         <Canvas>
             <Camera position={[0, 0, 0]} />
@@ -139,7 +155,7 @@ export default ({ io }) => {
                     rotation={[0, -Math.PI / 4, 0]}
                 />
                 <Kiosk
-                    to={`/kiosk3`}
+                    href={getSmsUrl()}
                     position={[-1.5, 0.3, -1.25]}
                     dimension={KIOSK_SIZE}
                     rotation={[0, -Math.PI / 8, 0]}
