@@ -12,21 +12,23 @@ export default ({
 }) => {
     return (
         <>
-            <mesh
-                position={position}
-                {...props}
-                onClick={() => !video && window.appHistory.push(to)}
-                onPointerUp={() => !video && window.appHistory.push(to)}
-            >
-                <boxBufferGeometry attach="geometry" args={dimension} />
-                <meshPhongMaterial
-                    attach="material"
-                    color="rgb(35, 35, 35)"
-                    roughness={0.5}
-                    opacity={1}
-                    transparent={false}
-                />
-            </mesh>
+            {!video && (
+                <mesh
+                    position={position}
+                    {...props}
+                    onClick={() => !video && window.appHistory.push(to)}
+                    onPointerUp={() => !video && window.appHistory.push(to)}
+                >
+                    <boxBufferGeometry attach="geometry" args={dimension} />
+                    <meshPhongMaterial
+                        attach="material"
+                        color="rgb(35, 35, 35)"
+                        roughness={0.5}
+                        opacity={1}
+                        transparent={false}
+                    />
+                </mesh>
+            )}
 
             {video && (
                 <VideoScreen
