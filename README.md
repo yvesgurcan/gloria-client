@@ -26,7 +26,7 @@ The address of the server on your local network depends on the IP of your machin
 
     npm run network-info
 
-Entry point of the application is located at `./src/index.js`. This file must use the TypeScript extension `.js`. However, other files imported in `index.js` can be either TypeScript files or JavaScript files with extension `.js`.
+Entry point of the application is located at `./src/index.js`. This file must use the JavaScript extension `.js`. However, other files imported in `index.js` can be either TypeScript files or JavaScript files with extension `.js`.
 
 ## Build/Deployment
 
