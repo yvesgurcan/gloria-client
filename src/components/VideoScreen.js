@@ -14,10 +14,17 @@ export default ({
 
     useEffect(() => {
         if (!videoReference.current) {
-            // grab video element so that it can be updated each frame
             const videoElement = document.createElement('video');
             videoElement.src = `public/wonderwoman.mp4`;
+            videoElement.muted = true;
+            videoElement.autoplay = true;
             videoElement.loop = true;
+            videoElement.disablePictureInPicture = true;
+            videoElement.preload = 'auto';
+            videoElement.controlslist =
+                'nodownload,nofullscreen,noremoteplayback';
+            videoElement.playsinline = true;
+
             videoReference.current = videoElement;
         }
 
