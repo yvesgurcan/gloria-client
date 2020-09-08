@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 import ViewLayer from '../components/ViewLayer';
-import TriforceModelViewer from '../components/TriforceModelViewer';
+import WingedMannModelViewer from '../components/WingedMannModelViewer';
 
 export default ({ color }) => {
     return (
         <ViewLayer backgroundColor={color}>
             <Content>
-                <TriforceModelViewer />
+                <WingedMannModelViewer />
             </Content>
         </ViewLayer>
     );
