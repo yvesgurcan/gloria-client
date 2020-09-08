@@ -12,6 +12,8 @@ import Kiosk from '../components/Kiosk';
 import DomeFloor from '../components/DomeFloor';
 import OrbitingLights from '../components/OrbitingLights';
 
+const KIOSK_SIZE = [0.1, 1.7, 0.9];
+
 export default ({ io }) => {
     const [localHost, setLocalHost] = useState(false);
     const [loading, setLoading] = useState(true);
@@ -123,45 +125,49 @@ export default ({ io }) => {
                 <Kiosk
                     video={1}
                     position={[1.25, 0.3, 1.5]}
-                    dimension={[0.1, 1, 0.6]}
+                    dimension={KIOSK_SIZE}
                     rotation={[0, Math.PI / 4, 0]}
                 />
                 <Kiosk
                     video={2}
                     position={[1.25, 0.3, -1.5]}
-                    dimension={[0.1, 1, 0.6]}
+                    dimension={KIOSK_SIZE}
                     rotation={[0, -Math.PI / 4, 0]}
                 />
                 <Kiosk
                     to={`/kiosk3`}
                     position={[-1.5, 0.3, -1.25]}
-                    dimension={[0.1, 1.7, 0.9]}
+                    dimension={KIOSK_SIZE}
                     rotation={[0, -Math.PI / 8, 0]}
                 />
                 <Kiosk
                     to={`/kiosk4`}
                     position={[-1.5, 0.3, 1.25]}
-                    dimension={[0.1, 1.7, 0.9]}
+                    dimension={KIOSK_SIZE}
                     rotation={[0, Math.PI / 8, 0]}
                 />
                 <Pedestal />
                 <TestModel
-                    modelPath='tf7/wings.glb'
-                    position={[0.06, -0.3, 0.7]} />
+                    modelPath="tf7/wings.glb"
+                    position={[0.06, -0.3, 0.7]}
+                />
                 <TestModel
-                    to='/pedestal'
-                    modelPath='tf7/att_pg_manniTest_low.glb'
-                    position={[0.05, -0.23, 0.5]} />
+                    to="/pedestal"
+                    modelPath="tf7/att_pg_manniTest_low.glb"
+                    position={[0.05, -0.23, 0.5]}
+                />
                 <TestModel
-                    modelPath='tf7/pong_arcade_cabin/scene.gltf'
+                    modelPath="tf7/pong_arcade_cabin/scene.gltf"
                     position={[1, 0.5, 3]}
                     rotation={[0, 1.8, 0]}
-                    scale={0.0008} />
+                    scale={0.0008}
+                />
                 <TestModel
-                    to='/hat'
-                    modelPath='tf7/weathered_pith_hat/scene.gltf'
+                    to="/hat"
+                    modelPath="tf7/weathered_pith_hat/scene.gltf"
                     position={[-2.1, 0, 2.1]}
-                    scale={0.005} />
+                    scale={0.005}
+                />
             </group>
         </Canvas>
     );
