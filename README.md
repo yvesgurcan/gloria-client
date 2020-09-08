@@ -34,7 +34,7 @@ Bump the version of your application.
 
     npm version patch
 
-This command will run your tests, create a production build at the root of your project, commit and push it.
+This command will increment the version of the application, create a production build at the root of your project, commit and push it.
 
 ## Structure
 
