@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useFrame } from 'react-three-fiber';
 
 import * as Three from 'three';
@@ -16,7 +16,7 @@ export default ({
         if (!videoReference.current) {
             // grab video element so that it can be updated each frame
             const videoElement = document.createElement('video');
-            videoElement.src = 'public/wonderwoman.mp4';
+            videoElement.src = `public/wonderwoman.mp4`;
             videoElement.loop = true;
             videoReference.current = videoElement;
         }
@@ -24,8 +24,8 @@ export default ({
         if (!videoTextureReference.current) {
             // create a canvas to display the video
             const videoImageElement = document.createElement('canvas');
-            videoImageElement.width = 480;
-            videoImageElement.height = 204;
+            videoImageElement.width = 400;
+            videoImageElement.height = 400;
 
             const videoContext = videoImageElement.getContext('2d');
             videoContext.fillStyle = 'rgb(0, 0, 0, 0.5)';
@@ -58,7 +58,6 @@ export default ({
     });
 
     function toggleVideoPlayback() {
-        console.log(videoReference.current.paused);
         if (videoReference.current.paused) {
             videoReference.current.play();
         } else {
@@ -74,6 +73,7 @@ export default ({
                     attach="material"
                     map={videoTextureReference.current}
                     overdraw
+                    side={Three.DoubleSide}
                 />
             </mesh>
         </>

@@ -30,9 +30,12 @@ export default ({
 
             {video && (
                 <VideoScreen
-                    position={[1.5, 0.0, -1.3]}
+                    video={video}
+                    position={video === 1 ? [1.5, 0.0, 1.3] : [1.5, 0.0, -1.3]}
                     dimension={[0.6, 0.9, 1, 1]}
-                    rotation={[0, Math.PI / 4, 0]}
+                    rotation={
+                        video === 1 ? [0, -Math.PI / 4, 0] : [0, Math.PI / 4, 0]
+                    }
                 />
             )}
         </>

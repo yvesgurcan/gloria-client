@@ -126,13 +126,13 @@ export default ({ io }) => {
                     <DomeFloor />
                     <DomeWalls />
                     <Kiosk
-                        to={`/kiosk1`}
+                        video={1}
                         position={[1.25, 0, 1.5]}
                         dimension={[0.1, 1, 0.6]}
                         rotation={[0, Math.PI / 4, 0]}
                     />
                     <Kiosk
-                        video
+                        video={2}
                         position={[1.25, 0, -1.5]}
                         dimension={[0.1, 1, 0.6]}
                         rotation={[0, -Math.PI / 4, 0]}
