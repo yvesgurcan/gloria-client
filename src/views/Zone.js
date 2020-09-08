@@ -161,6 +161,7 @@ export default ({ io }) => {
                 />
                 <Pedestal position={[0.5, -0.35, 0]} />
                 <TestModel
+                    to={`/kiosk1`}
                     modelPath="tf7/pong_arcade_cabin/scene.gltf"
                     position={[1, 0.5, 3]}
                     rotation={[0, 1.8, 0]}
