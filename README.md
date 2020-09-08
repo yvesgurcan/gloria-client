@@ -34,7 +34,7 @@ Bump the version of your application.
 
     npm version patch
 
-This command will run your tests, create a production build at the root of your project, commit and push it.
+This command will increment the version of the application, create a production build at the root of your project, commit and push it.
 
 ## Structure
 
@@ -60,3 +60,4 @@ Note that views are layered. As the user browses the application, 3D scenes are 
 -   https://modelviewer.dev/examples/augmented-reality.html
 -   https://medium.com/@cwervo/everything-i-know-about-launching-ios-ar-quick-look-from-the-web-e7957f165c51
 -   https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0
+-   https://inspiring-wiles-b4ffe0.netlify.app/
