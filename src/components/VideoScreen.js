@@ -24,6 +24,9 @@ export default ({
             videoElement.controlslist =
                 'nodownload,nofullscreen,noremoteplayback';
             videoElement.playsinline = true;
+            videoElement.playsInline = true;
+            videoElement.webkitPlaysinline = true;
+            videoElement.webkitPlaysInline = true;
 
             videoReference.current = videoElement;
         }
