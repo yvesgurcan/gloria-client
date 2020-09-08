@@ -25,7 +25,7 @@ export default ({ color, io, roomLog, selectedRef, selected, setSelected }) => {
         let url;
 
         if (ua.indexOf('iphone') > -1 || ua.indexOf('ipad') > -1)
-            url = 'sms:;body=' + encodeURIComponent(content);
+            url = 'sms:458-221-8603;body=' + encodeURIComponent(content);
         else url = 'sms:?body=' + encodeURIComponent(content);
 
         return url;

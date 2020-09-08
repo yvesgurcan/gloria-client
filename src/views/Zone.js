@@ -104,7 +104,7 @@ export default ({ io }) => {
 
         if (ua.indexOf('iphone') > -1 || ua.indexOf('ipad') > -1)
             url =
-                'sms:;body=' +
+                'sms:458-221-8603;body=' +
                 encodeURIComponent('Bonjour ! How can I help you?');
         else
             url =
