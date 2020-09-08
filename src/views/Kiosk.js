@@ -20,15 +20,29 @@ export default ({ color, io, roomLog, selectedRef, selected, setSelected }) => {
         return io && io.id;
     }, [search, io]);
 
+    function getSmsUrl(content) {
+        const ua = navigator.userAgent.toLowerCase();
+        let url;
+
+        if (ua.indexOf('iphone') > -1 || ua.indexOf('ipad') > -1)
+            url = 'sms:;body=' + encodeURIComponent(content);
+        else url = 'sms:?body=' + encodeURIComponent(content);
+
+        return url;
+    }
+
     const link = useMemo(() => {
         if (!roomId) {
-            return;
+            return { sms: undefined, web: undefined };
         }
 
         const { protocol, hostname, port } = window.location;
-        return `${protocol}//${hostname}${
+
+        const weblink = `${protocol}//${hostname}${
             port ? `:${port}` : ''
         }/#${pathname}?join=${roomId}`;
+
+        return { sms: getSmsUrl(weblink), web: weblink };
     }, [io, roomId]);
 
     useEffect(() => {
@@ -59,10 +73,7 @@ export default ({ color, io, roomLog, selectedRef, selected, setSelected }) => {
                 <br />
                 <Centered>
                     Send this link to your friends to invite them to play with
-                    you:{' '}
-                    <a target="_blank" href={link}>
-                        {link}
-                    </a>
+                    you: <a href={link.sms}>{link.web}</a>
                 </Centered>
                 <Quiz
                     io={io}
