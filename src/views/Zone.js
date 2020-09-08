@@ -16,8 +16,10 @@ const KIOSK_SIZE = [0.1, 1.7, 0.9];
 
 export default ({ io }) => {
     const [localHost, setLocalHost] = useState(false);
-    const [loading, setLoading] = useState(true);
-    const [orientationPermission, setOrientationPermission] = useState();
+    const [loading, setLoading] = useState(false);
+    const [orientationPermission, setOrientationPermission] = useState(
+        'denied'
+    );
 
     useEffect(() => {
         function isLocalHost() {
@@ -31,12 +33,14 @@ export default ({ io }) => {
         }
 
         function getOrientationPermissionFromLocalStorage() {
+            /*
             const storageOrientationPermission = localStorage.getItem(
                 '3d-dome-orientationPermission'
             );
             if (storageOrientationPermission) {
                 setOrientationPermission(storageOrientationPermission);
             }
+            */
         }
 
         setLocalHost(isLocalHost());
@@ -61,21 +65,21 @@ export default ({ io }) => {
                     console.info(
                         'Android device detected. Permission granted by default.'
                     );
-                    setOrientationPermission('granted');
+                    // setOrientationPermission('granted');
                     return;
                 }
             }
 
             const permission = await DeviceOrientationEvent.requestPermission();
             console.info({ permission });
-            setOrientationPermission(permission);
+            // setOrientationPermission(permission);
             localStorage.setItem('3d-dome-orientationPermission', permission);
         } catch (error) {
             console.error(
                 'An error occurred while setting device orientation permission. Permission denied.'
             );
             console.error(error);
-            setOrientationPermission('denied');
+            // setOrientationPermission('denied');
             localStorage.setItem('3d-dome-orientationPermission', 'denied');
         }
     }
@@ -150,13 +154,12 @@ export default ({ io }) => {
                     modelPath="tf7/wings.glb"
                     position={[0.06, -0.3, 0.7]}
                 />
-                <Pedestal position={[0.5, -0.35, 0]} />
                 <TestModel
-                    to="/hat"
+                    to="/pedestal"
                     modelPath="tf7/att_pg_manniTest_low.glb"
                     position={[0.05, -0.23, 0.5]}
                 />
-                <Pedestal position={[2.1, -0.3, 2.1]} />
+                <Pedestal position={[0.5, -0.35, 0]} />
                 <TestModel
                     modelPath="tf7/pong_arcade_cabin/scene.gltf"
                     position={[1, 0.5, 3]}
@@ -169,6 +172,7 @@ export default ({ io }) => {
                     position={[-2.1, 0, 2.1]}
                     scale={0.005}
                 />
+                <Pedestal position={[2.1, -0.3, 2.1]} />
             </group>
         </Canvas>
     );
