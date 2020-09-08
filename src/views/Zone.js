@@ -146,16 +146,17 @@ export default ({ io }) => {
                     dimension={KIOSK_SIZE}
                     rotation={[0, Math.PI / 8, 0]}
                 />
-                <Pedestal />
                 <TestModel
                     modelPath="tf7/wings.glb"
                     position={[0.06, -0.3, 0.7]}
                 />
+                <Pedestal position={[0.5, -0.35, 0]} />
                 <TestModel
-                    to="/pedestal"
+                    to="/hat"
                     modelPath="tf7/att_pg_manniTest_low.glb"
                     position={[0.05, -0.23, 0.5]}
                 />
+                <Pedestal position={[2.1, -0.3, 2.1]} />
                 <TestModel
                     modelPath="tf7/pong_arcade_cabin/scene.gltf"
                     position={[1, 0.5, 3]}
