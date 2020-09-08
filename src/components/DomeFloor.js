@@ -7,10 +7,10 @@ export default () => {
             <circleGeometry attach="geometry" args={[6, 32]} />
             <meshPhongMaterial
                 attach="material"
-                color="rgb(46, 46, 46)"
-                metalness={1}
+                color="rgb(20, 20, 20)"
+                metalness={0}
                 specular={0x1a1a1a}
-                shininess={100}
+                shininess={0}
                 side={Three.DoubleSide}
             />
         </mesh>
