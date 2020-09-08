@@ -6,6 +6,7 @@ export default ({ position = [0, 0, 0] }) => {
 
     useEffect(() => {
         if (!videoReference) {
+            videoReference.current = 
             /*
             const videoElement = document.createElement('video');
             videoElement.src = 'public/wonderwoman.mp4';
@@ -17,5 +18,5 @@ export default ({ position = [0, 0, 0] }) => {
         }
     });
 
-    return <video src="public/wonderwoman.mp4" />;
+    return <video  src="public/wonderwoman.mp4" ref={videoReference} />;
 };
