@@ -9,7 +9,6 @@ import DomeWalls from '../components/DomeWalls';
 import Pedestal from '../components/Pedestal';
 import Triforce from '../components/Triforce';
 import Kiosk from '../components/Kiosk';
-import VideoScreen from '../components/VideoScreen';
 import DomeFloor from '../components/DomeFloor';
 
 export default ({ io }) => {
@@ -133,7 +132,7 @@ export default ({ io }) => {
                         rotation={[0, Math.PI / 4, 0]}
                     />
                     <Kiosk
-                        to={`/kiosk2`}
+                        video
                         position={[1.25, 0, -1.5]}
                         dimension={[0.1, 1, 0.6]}
                         rotation={[0, -Math.PI / 4, 0]}
@@ -154,8 +153,6 @@ export default ({ io }) => {
                     <Triforce modelPath="triforce" position={[0, 0, 0.5]} />
                 </group>
             </Canvas>
-
-            <VideoScreen play />
         </>
     );
 };
