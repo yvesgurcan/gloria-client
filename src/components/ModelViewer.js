@@ -7,5 +7,6 @@ export default props => (
         auto-rotate
         camera-controls
         {...props}
+        style={{ width: '60vw', height: '60vh' }}
     />
 );
