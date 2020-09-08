@@ -9,6 +9,7 @@ import DomeWalls from '../components/DomeWalls';
 import Pedestal from '../components/Pedestal';
 import Triforce from '../components/Triforce';
 import Kiosk from '../components/Kiosk';
+import VideoScreen from '../components/VideoScreen';
 import DomeFloor from '../components/DomeFloor';
 
 export default ({ io }) => {
@@ -92,65 +93,69 @@ export default ({ io }) => {
     }
 
     return (
-        <Canvas>
-            <Camera position={[0, 0, 0]} />
-            <Controls
-                orientationPermission={orientationPermission}
-                localHost={localHost}
-            />
-            <Triforce pathModel={'triforce4'} position={[2, 1, 0]} />
-            <group position={[4, 0, 0]} rotation={[0, -Math.PI, 0]}>
-                <ambientLight intensity={0.85} />
-                <spotLight
-                    color="white"
-                    intensity={0.1}
-                    position={[-20, 20, 0]}
+        <>
+            <Canvas>
+                <Camera position={[0, 0, 0]} />
+                <Controls
+                    orientationPermission={orientationPermission}
+                    localHost={localHost}
                 />
-                <directionalLight
-                    color="white"
-                    intensity={0.1}
-                    position={[-2, 9, 0]}
-                />
-                <directionalLight
-                    color="white"
-                    intensity={0.2}
-                    position={[7, -3, -5]}
-                />
-                <directionalLight
-                    color="white"
-                    intensity={0.1}
-                    position={[10, 6, 5]}
-                />
-                <Skybox />
-                <DomeFloor />
-                <DomeWalls />
-                <Kiosk
-                    to={`/kiosk1`}
-                    position={[1.25, 0, 1.5]}
-                    dimension={[0.1, 1, 0.6]}
-                    rotation={[0, Math.PI / 4, 0]}
-                />
-                <Kiosk
-                    to={`/kiosk2`}
-                    position={[1.25, 0, -1.5]}
-                    dimension={[0.1, 1, 0.6]}
-                    rotation={[0, -Math.PI / 4, 0]}
-                />
-                <Kiosk
-                    to={`/kiosk3`}
-                    position={[-1.5, 0, -1.25]}
-                    dimension={[0.1, 1, 0.6]}
-                    rotation={[0, -Math.PI / 8, 0]}
-                />
-                <Kiosk
-                    to={`/kiosk4`}
-                    position={[-1.5, 0, 1.25]}
-                    dimension={[0.1, 1, 0.6]}
-                    rotation={[0, Math.PI / 8, 0]}
-                />
-                <Pedestal />
-                <Triforce modelPath="triforce" position={[0, 0, 0.5]} />
-            </group>
-        </Canvas>
+                <Triforce pathModel={'triforce4'} position={[2, 1, 0]} />
+                <group position={[4, 0, 0]} rotation={[0, -Math.PI, 0]}>
+                    <ambientLight intensity={0.85} />
+                    <spotLight
+                        color="white"
+                        intensity={0.1}
+                        position={[-20, 20, 0]}
+                    />
+                    <directionalLight
+                        color="white"
+                        intensity={0.1}
+                        position={[-2, 9, 0]}
+                    />
+                    <directionalLight
+                        color="white"
+                        intensity={0.2}
+                        position={[7, -3, -5]}
+                    />
+                    <directionalLight
+                        color="white"
+                        intensity={0.1}
+                        position={[10, 6, 5]}
+                    />
+                    <Skybox />
+                    <DomeFloor />
+                    <DomeWalls />
+                    <Kiosk
+                        to={`/kiosk1`}
+                        position={[1.25, 0, 1.5]}
+                        dimension={[0.1, 1, 0.6]}
+                        rotation={[0, Math.PI / 4, 0]}
+                    />
+                    <Kiosk
+                        to={`/kiosk2`}
+                        position={[1.25, 0, -1.5]}
+                        dimension={[0.1, 1, 0.6]}
+                        rotation={[0, -Math.PI / 4, 0]}
+                    />
+                    <Kiosk
+                        to={`/kiosk3`}
+                        position={[-1.5, 0, -1.25]}
+                        dimension={[0.1, 1, 0.6]}
+                        rotation={[0, -Math.PI / 8, 0]}
+                    />
+                    <Kiosk
+                        to={`/kiosk4`}
+                        position={[-1.5, 0, 1.25]}
+                        dimension={[0.1, 1, 0.6]}
+                        rotation={[0, Math.PI / 8, 0]}
+                    />
+                    <Pedestal />
+                    <Triforce modelPath="triforce" position={[0, 0, 0.5]} />
+                </group>
+            </Canvas>
+
+            <VideoScreen play />
+        </>
     );
 };

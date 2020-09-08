@@ -31,8 +31,6 @@ function Triforce({ to = '/pedestal', position, modelPath = 'triforce' }) {
         }
     });
 
-    console.log(modelPath);
-
     return (
         <mesh
             rotation={[0, Math.PI / 2, 0]}
