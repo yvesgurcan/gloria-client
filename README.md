@@ -1,4 +1,4 @@
-# 3D Dome
+# Gloria Client
 
 ## Main dependencies
 
