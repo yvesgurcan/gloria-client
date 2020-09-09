@@ -1,12 +1,12 @@
 {
-    "name": "3d-dome",
-    "description": "🐟 It's 3D and it's beautiful.",
+    "name": "gloria-client",
+    "description": "Proof of concept for Project Gloria.",
     "version": "0.0.96",
     "license": "MIT",
     "author": "Yves Gurcan",
     "repository": {
         "type": "git",
-        "url": "https://github.com/yvesgurcan/3d-dome"
+        "url": "https://github.com/Twenty-Four-7-Web-Dev/gloria-client"
     },
     "main": "index.js",
     "scripts": {
