@@ -2,15 +2,19 @@
 
 ## Main dependencies
 
+-   React: A JavaScript framework.
+-   Styled Components: A library to turn CSS stylesheets into React components.
 -   Three.js: A JavaScript 3D renderer for the browser.
 -   React Three Fiber: A wrapper around Three.js for React.
 -   `three-js-csg-es6`: A ES6-compatible wrapper around Chandler Prall's Three.js Constructive Solid Geometry (CSG) port to build complex 3D geometry (such as carving shapes in objects thanks to other objects).
 -   [model-viewer](https://github.com/google/model-viewer): A web component created by Google that supports augmented reality. See demo: https://modelviewer.dev/.
--   Socket.io Client.
--   Eruda: Debug tool intended for access of the JavaScript console in mobile.
--   Styled Components.
--   Webpack.
--   Babel.
+-   Socket.io Client: Aclient for WebSocket connections.
+-   Eruda: Debug tool intended to access the JavaScript console in mobile.
+-   Webpack
+-   Babel
+-   AWS CLI
+-   Node.js
+-   `npm` or `yarn`
 
 ## Setup
 
@@ -34,7 +38,9 @@ Bump the version of your application.
 
     npm version patch
 
-This command will increment the version of the application, create a production build at the root of your project, commit and push it.
+This command will increment the version of the application, create a production build, and push it to S3.
+
+You must have the AWS CLI installed on your machine in order to deploy to S3 automatically.
 
 ## Structure
 

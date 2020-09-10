@@ -8,16 +8,10 @@ module.exports = {
     entry: './src/index.js',
     output: {
         filename: '[name].[contenthash].js',
-        path: path.resolve(__dirname, './')
+        path: path.resolve(__dirname, './build')
     },
     plugins: [
-        new CleanWebpackPlugin({
-            cleanOnceBeforeBuildPatterns: [
-                'main.*.js',
-                'vendors~main.*.js',
-                'runtime.*.js'
-            ]
-        }),
+        new CleanWebpackPlugin(),
         new CopyWebpackPlugin({
             patterns: [
                 {
