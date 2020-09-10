@@ -2,6 +2,10 @@ import React from 'react';
 import { Canvas } from 'react-three-fiber';
 
 import Controls from '../components/Gallery.Controls';
+import Skybox from '../components/Gallery.Skybox';
+import GalleryImage from '../components/Gallery.Image';
+
+const IMAGES = ['test'];
 
 export default ({ orientationPermission, localHost }) => {
     return (
@@ -10,6 +14,10 @@ export default ({ orientationPermission, localHost }) => {
                 orientationPermission={orientationPermission}
                 localHost={localHost}
             />
+            {IMAGES.map(image => (
+                <GalleryImage />
+            ))}
+            <Skybox />
         </Canvas>
     );
 };

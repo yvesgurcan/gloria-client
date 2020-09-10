@@ -25,7 +25,7 @@ export default () => {
             <group position={[4, 0, 0]} rotation={[0, -Math.PI, 0]}>
                 <Skybox />
                 <StaticLights />
-                <OrbitingLights />
+                {/*<OrbitingLights />*/}
                 <Floor />
                 <Border />
                 <Kiosks />

@@ -6,6 +6,7 @@ import * as Three from 'three';
 export default ({
     position = [0, 0, 0],
     dimension = [1, 1, 1, 1],
+    partialPath,
     ...props
 }) => {
     const videoReference = useRef();
@@ -15,7 +16,7 @@ export default ({
     useEffect(() => {
         if (!videoReference.current) {
             const videoElement = document.createElement('video');
-            videoElement.src = `public/wonderwoman.mp4`;
+            videoElement.src = `public/${partialPath}`;
             videoElement.muted = true;
             videoElement.autoplay = true;
             videoElement.loop = true;
@@ -34,8 +35,8 @@ export default ({
         if (!videoTextureReference.current) {
             // create a canvas to display the video
             const videoImageElement = document.createElement('canvas');
-            videoImageElement.width = 400;
-            videoImageElement.height = 400;
+            videoImageElement.width = 240 * 4;
+            videoImageElement.height = 100 * 4;
 
             const videoContext = videoImageElement.getContext('2d');
             videoContext.fillStyle = 'rgb(0, 0, 0, 0.5)';

@@ -14,6 +14,7 @@ echo "Timestamp: $NOW"
 echo "Target bucket: $BUCKET"
 echo "Backup Bucket: $BACKUP_BUCKET"
 echo "Local relative build location: $LOCAL_BUILD"
+echo "CloudFront Distribution ID: $CLOUDFRONT_DISTRIBUTION_ID"
 echo ""
 
 if [ -z "$(ls -A $LOCAL_BUILD)" ]; then

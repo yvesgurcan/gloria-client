@@ -24,15 +24,16 @@ export default () => {
     return (
         <group>
             <Kiosk
+                to="/gallery"
+                position={[-1.5, 0.3, 1.25]}
+                dimension={KIOSK_SIZE}
+                rotation={[0, Math.PI / 8, 0]}
+            />
+            <Kiosk
                 href={getSmsUrl()}
                 position={[-1.5, 0.3, -1.25]}
                 dimension={KIOSK_SIZE}
                 rotation={[0, -Math.PI / 8, 0]}
-            />
-            <Kiosk
-                position={[-1.5, 0.3, 1.25]}
-                dimension={KIOSK_SIZE}
-                rotation={[0, Math.PI / 8, 0]}
             />
         </group>
     );

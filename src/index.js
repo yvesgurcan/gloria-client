@@ -5,7 +5,7 @@ import { HashRouter, Route, Switch } from 'react-router-dom';
 import GlobalStyles from './components/Global.Styles';
 import DeveloperTools from './components/Global.DeveloperTools';
 import Zone from './views/Zone';
-import Gallery from './views/Gallery';
+import Gallery from './views/Zone.Gallery';
 
 const ROOT_ELEMENT = document.getElementById('root');
 
