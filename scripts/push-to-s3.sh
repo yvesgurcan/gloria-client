@@ -1,6 +1,7 @@
 #!/bin/bash  
 set -e
 
+CLOUDFRONT_DISTRIBUTION_ID="E3G41PDQ01SVNY"
 BUCKET_NAME="gloria.twentyfour7.com"
 BUCKET="s3://$BUCKET_NAME"
 BACKUP_BUCKET="s3://$BUCKET_NAME.backup"
@@ -58,6 +59,10 @@ aws s3 ls $BUCKET
 echo ""
 echo "Build successfully uploaded."
 echo ""
+
+echo ""
+echo "Invalidating cache:"
+aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/"
 
 echo "Backing up content of $BUCKET into $BACKUP_BUCKET:"
 aws s3 cp $BUCKET $BACKUP_BUCKET/$NOW --recursive
