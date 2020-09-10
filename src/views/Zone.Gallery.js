@@ -78,7 +78,10 @@ export default () => {
 
     return (
         <>
-            <Scene orientationPermission={orientationPermission} />
+            <Scene
+                localHost={localHost}
+                orientationPermission={orientationPermission}
+            />
         </>
     );
 };
