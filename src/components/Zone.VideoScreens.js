@@ -19,12 +19,14 @@ export default () => (
             partialPath="bts/videos/WonderWoman1984_AmazonGames_DCFandome_1080_wide.mp4"
             position={[X, Y, Z]}
             dimension={VIDEO_SIZE}
+            videoDimension={{ width: WIDTH * 100, height: HEIGHT * 100 }}
             rotation={[0, -ROTATION, 0]}
         />
         <VideoScreen
             partialPath="bts/videos/WonderWoman1984_ANewWorldOfWonder-Swarovski_1080_wide.mp4"
             position={[X, Y, -Z]}
             dimension={VIDEO_SIZE}
+            videoDimension={{ width: WIDTH * 100, height: HEIGHT * 100 }}
             rotation={[0, ROTATION, 0]}
         />
     </group>

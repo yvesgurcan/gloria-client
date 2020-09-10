@@ -6,6 +6,7 @@ import * as Three from 'three';
 export default ({
     position = [0, 0, 0],
     dimension = [1, 1, 1, 1],
+    videoDimension = { width: 1, height: 1 },
     partialPath,
     ...props
 }) => {
@@ -35,8 +36,8 @@ export default ({
         if (!videoTextureReference.current) {
             // create a canvas to display the video
             const videoImageElement = document.createElement('canvas');
-            videoImageElement.width = 240 * 4;
-            videoImageElement.height = 100 * 4;
+            videoImageElement.width = videoDimension.width * 4;
+            videoImageElement.height = videoDimension.height * 4;
 
             const videoContext = videoImageElement.getContext('2d');
             videoContext.fillStyle = 'rgb(0, 0, 0, 0.5)';
