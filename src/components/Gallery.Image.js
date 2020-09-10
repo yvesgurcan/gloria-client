@@ -2,7 +2,7 @@ import React from 'react';
 import { TextureLoader, DoubleSide } from 'three';
 
 export default ({
-    position = [0.5, 0.5, 0],
+    position = [0, 0, 0],
     dimension = [1, 1, 1, 1],
     partialPath = '',
     ...props
