@@ -12,7 +12,8 @@
     "scripts": {
         "start": "npm run network-info; webpack-dev-server",
         "build": "webpack --mode production",
-        "postversion": "npm run build && git add . && git commit -m 'New build' && git push",
+        "build:push": "bash ./scripts/push-to-s3.sh",
+        "postversion": "npm run build && npm run build:push",
         "network-info": "echo \"ℹ ｢wds｣ Running on local network at http:/\" | tr \"\n\" \"/\"; ifconfig | grep \"inet \" | grep -Fv 127.0.0.1 | awk '{print $2}'"
     },
     "devDependencies": {
