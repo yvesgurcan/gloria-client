@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Canvas } from 'react-three-fiber';
 
 import isLocalHost from '../util/localHost';
-import Camera from './Zone.Camera';
+import Camera from './Shared.Camera';
 import Controls from './Zone.Controls';
 import Skybox from './Zone.Skybox';
 import StaticLights from './Zone.StaticLights';
@@ -25,7 +25,7 @@ export default () => {
             <group position={[4, 0, 0]} rotation={[0, -Math.PI, 0]}>
                 <Skybox />
                 <StaticLights />
-                {/*<OrbitingLights />*/}
+                <OrbitingLights />
                 <Floor />
                 <Border />
                 <Kiosks />

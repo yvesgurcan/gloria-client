@@ -6,9 +6,7 @@ import Scene from '../components/Gallery.Scene';
 
 export default () => {
     const [loading, setLoading] = useState(false);
-    const [orientationPermission, setOrientationPermission] = useState(
-        'denied'
-    );
+    const [orientationPermission, setOrientationPermission] = useState();
     const [localHost, setLocalHost] = useState(false);
 
     useEffect(() => {
