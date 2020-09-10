@@ -1,6 +1,6 @@
 import React from 'react';
 
-import OrbitControls from './OrbitControls';
+import OrbitControls from './Zone.OrbitControls';
 
 export default () => (
     <OrbitControls

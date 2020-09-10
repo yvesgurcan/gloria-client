@@ -1,6 +1,6 @@
 import React from 'react';
 
-import VideoScreen from './VideoScreen';
+import VideoScreen from './Zone.VideoScreen';
 
 export default ({
     href = '',

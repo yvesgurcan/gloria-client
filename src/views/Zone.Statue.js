@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import ViewLayer from '../components/ViewLayer';
-import HatModelViewer from '../components/HatModelViewer';
+import ViewLayer from '../components/Shared.ViewLayer';
+import ModelViewer from '../components/Statue.ModelViewer';
 
 export default ({ color }) => {
     return (
         <ViewLayer backgroundColor={color}>
             <Content>
-                <HatModelViewer />
+                <ModelViewer />
             </Content>
         </ViewLayer>
     );

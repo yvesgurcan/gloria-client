@@ -5,7 +5,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 const DEFAULT_ROTATION = [0, Math.PI / 2, 0];
 const DEFAULT_SCALE = 1;
 
-function TestModel({
+function Model({
     modelPath,
     position,
     to = '',
@@ -37,6 +37,6 @@ function TestModel({
 
 export default props => (
     <Suspense fallback={null}>
-        <TestModel {...props} />
+        <Model {...props} />
     </Suspense>
 );

@@ -3,8 +3,8 @@ import { useLocation } from 'react-router';
 import styled from 'styled-components';
 import faker from 'faker';
 
-import ViewLayer from '../components/ViewLayer';
-import Quiz from '../components/Quiz';
+import ViewLayer from '../components/Shared.ViewLayer';
+import Quiz from '../components/Arcade.Quiz';
 
 export default ({ color, io, roomLog, selectedRef, selected, setSelected }) => {
     const [name, setName] = useState('');

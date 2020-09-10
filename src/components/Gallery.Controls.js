@@ -1,12 +1,10 @@
 import React from 'react';
 
-import OrbitControls from './OrbitControls';
-import OrbitControlsLimited from './OrbitControlsLimited';
-import DeviceOrientationControls from './DeviceOrientationControls';
+import OrbitControls from './Zone.OrbitControls';
+import OrbitControlsLimited from './Zone.OrbitControlsLimited';
+import DeviceOrientationControls from './Gallery.DeviceOrientationControls';
 
 export default ({ orientationPermission, localHost }) => {
-    return localHost ? <OrbitControls /> : <OrbitControlsLimited />;
-
     return (
         <>
             {orientationPermission !== 'denied' ? null : localHost ? (

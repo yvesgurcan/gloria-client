@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import ViewContent from './ViewContent';
+import ViewContent from './Shared.ViewContent';
 
 export default ({ back, children, ...props }) => (
     <ViewLayer {...props}>
