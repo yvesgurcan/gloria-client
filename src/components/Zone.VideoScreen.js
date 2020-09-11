@@ -29,6 +29,7 @@ export default ({
             videoElement.playsInline = true;
             videoElement.webkitPlaysinline = true;
             videoElement.webkitPlaysInline = true;
+            videoElement.play();
 
             videoReference.current = videoElement;
         }
@@ -69,17 +70,18 @@ export default ({
         }
     });
 
-    function toggleVideoPlayback() {
+    function handleVideoClick() {
         if (videoReference.current.paused) {
             videoReference.current.play();
+            videoReference.current.muted = false;
         } else {
-            videoReference.current.pause();
+            videoReference.current.muted = !videoReference.current.muted;
         }
     }
 
     return (
         <>
-            <mesh position={position} {...props} onClick={toggleVideoPlayback}>
+            <mesh position={position} {...props} onClick={handleVideoClick}>
                 <planeGeometry attach="geometry" args={dimension} />
                 <meshBasicMaterial
                     attach="material"

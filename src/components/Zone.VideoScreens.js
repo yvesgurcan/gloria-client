@@ -3,7 +3,7 @@ import React from 'react';
 import VideoScreen from './Zone.VideoScreen';
 
 const WIDTH = 2.4;
-const HEIGHT = 1;
+const HEIGHT = 1.1;
 const RATIO = 2;
 
 const VIDEO_SIZE = [WIDTH * RATIO, HEIGHT * RATIO, 1, 1];
@@ -20,7 +20,7 @@ export default () => (
             position={[X, Y, Z]}
             dimension={VIDEO_SIZE}
             videoDimension={{ width: WIDTH * 100, height: HEIGHT * 100 }}
-            rotation={[0, -ROTATION, 0]}
+            rotation={[Math.PI, ROTATION, Math.PI]}
         />
         <VideoScreen
             partialPath="bts/videos/WonderWoman1984_ANewWorldOfWonder-Swarovski_1080_wide.mp4"
