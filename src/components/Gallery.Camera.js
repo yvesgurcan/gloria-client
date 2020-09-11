@@ -15,5 +15,5 @@ export default () => {
         cameraReference.current.updateMatrixWorld();
     });
 
-    return <perspectiveCamera fov={90} ref={cameraReference} />;
+    return <perspectiveCamera fov={60} ref={cameraReference} />;
 };
