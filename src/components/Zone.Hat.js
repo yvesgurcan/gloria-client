@@ -11,7 +11,7 @@ export default () => (
         <Model
             to="/hat"
             modelPath="tf7/weathered_pith_hat/scene.gltf"
-            position={[-X, 0, Y]}
+            position={[X, 0, Y]}
             scale={0.005}
         />
         <Pedestal position={[Y, -0.3, X]} />

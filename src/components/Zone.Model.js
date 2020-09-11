@@ -14,29 +14,24 @@ function Model({
 }) {
     const model = useLoader(GLTFLoader, 'public/' + modelPath);
 
-    useEffect(() => {
-        model.scene.scale.set(scale, scale, scale);
-    }, [model]);
-
-    const handleSelection = () => {
-        if (to) {
-            window.appHistory.push(to);
-        }
-    };
-
     return (
         <mesh
             rotation={rotation}
-            onClick={handleSelection}
-            onPointerUp={handleSelection}
+            onClick={() => to && window.appHistory.push(to)}
+            onPointerUp={() => to && window.appHistory.push(to)}
+            scale={[scale, scale, scale]}
+            position={position}
         >
-            <primitive object={model.scene} position={position} />
+            <primitive object={model.scene} />
         </mesh>
     );
 }
 
-export default props => (
-    <Suspense fallback={null}>
+export default ({ suspense = true, ...props }) =>
+    suspense ? (
+        <Suspense fallback={null}>
+            <Model {...props} />
+        </Suspense>
+    ) : (
         <Model {...props} />
-    </Suspense>
-);
+    );
