@@ -3,6 +3,7 @@
 ## Main dependencies
 
 -   React: A JavaScript framework.
+-   React Router.
 -   Styled Components: A library to turn CSS stylesheets into React components.
 -   Three.js: A JavaScript 3D renderer for the browser.
 -   React Three Fiber: A wrapper around Three.js for React.
