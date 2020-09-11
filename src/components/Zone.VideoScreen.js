@@ -73,9 +73,8 @@ export default ({
     function handleVideoClick() {
         if (videoReference.current.paused) {
             videoReference.current.play();
-            videoReference.current.muted = false;
         } else {
-            videoReference.current.muted = !videoReference.current.muted;
+            videoReference.current.pause();
         }
     }
 
