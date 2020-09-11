@@ -43,7 +43,7 @@ export default () => {
                     console.info(
                         'Android device detected. Permission granted by default.'
                     );
-                    // setOrientationPermission('granted');
+                    setOrientationPermission('granted');
                     return;
                 }
             }
