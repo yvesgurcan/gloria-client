@@ -15,8 +15,10 @@ export default () => {
 
     return (
         <DeveloperTools>
-            {packageJson.version}
-            <FPSStats />{' '}
+            <FPSWrapper>
+                <FPSStats />
+            </FPSWrapper>
+            <span>{packageJson.version}</span>{' '}
             <button
                 onClick={() => {
                     localStorage.removeItem('3d-dome-orientationPermission');
@@ -31,8 +33,8 @@ export default () => {
 
 const DeveloperTools = styled.div`
     position: fixed;
-    bottom: 1rem;
-    left: 1rem;
+    bottom: 0.5rem;
+    left: 0.5rem;
     color: white;
     z-index: 9999;
     background: rgb(0, 0, 0, 0.3);
@@ -40,4 +42,15 @@ const DeveloperTools = styled.div`
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     border-radius: 0.5rem;
+`;
+
+const FPSWrapper = styled.div`
+    > div {
+        /* Override default FPS counter inline style */
+        left: auto !important;
+        top: 0.6rem !important;
+        right: 0.6rem !important;
+        opacity: 0.7;
+        border-radius: 0.4rem;
+    }
 `;
