@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { useThree, useFrame } from 'react-three-fiber';
 
 export default ({
     autoRotate = false,
