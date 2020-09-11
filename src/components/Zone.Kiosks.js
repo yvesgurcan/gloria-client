@@ -2,7 +2,7 @@ import React from 'react';
 
 import Kiosk from './Zone.Kiosk';
 
-const KIOSK_SIZE = [0.1, 1.7, 0.9];
+const KIOSK_SIZE = [0.1, 1.8, 1];
 
 export default () => {
     function getSmsUrl() {
