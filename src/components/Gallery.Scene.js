@@ -1,10 +1,12 @@
 import React from 'react';
 import { Canvas } from 'react-three-fiber';
+import styled from 'styled-components';
 
 import Camera from './Gallery.Camera';
-import Controls from '../components/Gallery.Controls';
-import Skybox from '../components/Gallery.Skybox';
-import GalleryImage from '../components/Gallery.Image';
+import Controls from './Gallery.Controls';
+import Skybox from './Gallery.Skybox';
+import GalleryImage from './Gallery.Image';
+import Back from './Shared.Back';
 
 const IMAGES = [
     'WW84-06258',
@@ -101,29 +103,42 @@ const getPositionZ = index => {
 
 export default ({ orientationPermission, localHost }) => {
     return (
-        <Canvas>
-            <Camera />
-            <Controls
-                orientationPermission={orientationPermission}
-                localHost={localHost}
-            />
-            <Skybox />
-            <group rotation={[0, -Math.PI / 2, 0]}>
-                {IMAGES.map((image, index) => {
-                    const rotationY = getRotationX(index);
-                    const positionX = getPositionX(index);
-                    const positionZ = getPositionZ(index);
-                    console.log({ index, positionX, positionZ, rotationY });
-                    return (
-                        <GalleryImage
-                            key={image}
-                            partialPath={`bts/images/${image}.jpg`}
-                            position={[positionX, 0, positionZ]}
-                            rotation={[0, rotationY, 0]}
-                        />
-                    );
-                })}
-            </group>
-        </Canvas>
+        <>
+            <Overlay>
+                <Back />
+            </Overlay>
+            <Canvas>
+                <Camera />
+                <Controls
+                    orientationPermission={orientationPermission}
+                    localHost={localHost}
+                />
+                <Skybox />
+                <group rotation={[0, -Math.PI / 2, 0]}>
+                    {IMAGES.map((image, index) => {
+                        const rotationY = getRotationX(index);
+                        const positionX = getPositionX(index);
+                        const positionZ = getPositionZ(index);
+                        console.log({ index, positionX, positionZ, rotationY });
+                        return (
+                            <GalleryImage
+                                key={image}
+                                partialPath={`bts/images/${image}.jpg`}
+                                position={[positionX, 0, positionZ]}
+                                rotation={[0, rotationY, 0]}
+                            />
+                        );
+                    })}
+                </group>
+            </Canvas>
+        </>
     );
 };
+
+const Overlay = styled.div`
+    position: fixed;
+    z-index: 800;
+    left: 1rem;
+    top: 1rem;
+    color: red;
+`;

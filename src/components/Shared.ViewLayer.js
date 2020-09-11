@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 import ViewContent from './Shared.ViewContent';
+import Back from './Shared.Back';
 
-export default ({ back, children, ...props }) => (
+export default ({ back = '/', children, ...props }) => (
     <ViewLayer {...props}>
         <ViewContent>
-            {back !== undefined ? back : <Link to="/">Back</Link>}
+            <Back to={back} />
             {children}
         </ViewContent>
     </ViewLayer>
