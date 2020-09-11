@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route } from 'react-router';
 import { Canvas } from 'react-three-fiber';
 import styled from 'styled-components';
 
@@ -104,9 +105,15 @@ const getPositionZ = index => {
 export default ({ orientationPermission, localHost }) => {
     return (
         <>
-            <Overlay>
-                <Back />
-            </Overlay>
+            <Route
+                exact
+                path="/gallery"
+                component={() => (
+                    <Overlay>
+                        <Back />
+                    </Overlay>
+                )}
+            />
             <Canvas>
                 <Camera />
                 <Controls
@@ -115,15 +122,16 @@ export default ({ orientationPermission, localHost }) => {
                 />
                 <Skybox />
                 <group rotation={[0, -Math.PI / 2, 0]}>
-                    {IMAGES.map((image, index) => {
+                    {IMAGES.map((imageName, index) => {
                         const rotationY = getRotationX(index);
                         const positionX = getPositionX(index);
                         const positionZ = getPositionZ(index);
                         console.log({ index, positionX, positionZ, rotationY });
                         return (
                             <GalleryImage
-                                key={image}
-                                partialPath={`bts/images/${image}.jpg`}
+                                key={imageName}
+                                to={`/gallery/${imageName}`}
+                                partialPath={`bts/images/${imageName}.jpg`}
                                 position={[positionX, 0, positionZ]}
                                 rotation={[0, rotationY, 0]}
                             />
@@ -140,5 +148,4 @@ const Overlay = styled.div`
     z-index: 800;
     left: 1rem;
     top: 1rem;
-    color: red;
 `;
