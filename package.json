@@ -13,6 +13,7 @@
         "start": "npm run network-info; webpack-dev-server",
         "build": "webpack --mode production",
         "build:push": "bash ./scripts/push-to-s3.sh",
+        "build:update-cache": "bash ./scripts/invalidate-cache.sh",
         "postversion": "npm run build && npm run build:push",
         "network-info": "echo \"ℹ ｢wds｣ Running on local network at http:/\" | tr \"\n\" \"/\"; ifconfig | grep \"inet \" | grep -Fv 127.0.0.1 | awk '{print $2}'"
     },
