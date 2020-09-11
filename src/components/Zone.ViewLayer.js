@@ -1,13 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import ViewContent from './Shared.ViewContent';
+import ViewContent from './Zone.ViewContent';
 import Back from './Shared.Back';
 
 export default ({ back = '/', children, ...props }) => (
     <ViewLayer {...props}>
         <ViewContent>
-            <Back to={back} />
+            <BackContainer>
+                <Back to={back} />
+            </BackContainer>
             {children}
         </ViewContent>
     </ViewLayer>
@@ -23,4 +25,8 @@ const ViewLayer = styled.div`
     box-sizing: border-box;
     z-index: ${props => props.zIndex};
     color: white;
+`;
+
+const BackContainer = styled.div`
+    display: flex;
 `;

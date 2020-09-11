@@ -3,7 +3,7 @@ import { useLocation } from 'react-router';
 import styled from 'styled-components';
 import faker from 'faker';
 
-import ViewLayer from '../components/Shared.ViewLayer';
+import ViewLayer from '../components/Zone.ViewLayer';
 import Quiz from '../components/Arcade.Quiz';
 
 export default ({ color, io, roomLog, selectedRef, selected, setSelected }) => {

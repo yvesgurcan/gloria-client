@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import ViewLayer from '../components/Shared.ViewLayer';
+import ViewLayer from '../components/Zone.ViewLayer';
 import ModelViewer from '../components/Statue.ModelViewer';
 
 export default ({ color }) => {
